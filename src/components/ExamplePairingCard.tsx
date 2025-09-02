@@ -3,6 +3,23 @@ import { motion } from "framer-motion";
 import { RotateCcw, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { PartnerDetailsModal } from "./PartnerDetailsModal";
+
+interface Partner {
+  name: string;
+  rating: number;
+  reviews: number;
+  description: string;
+  availability: string;
+}
+
+interface Offer {
+  name: string;
+  image: string;
+  price: string;
+  category: "accessory" | "service" | "warranty" | "subscription";
+  partner: Partner;
+}
 
 interface ExamplePairing {
   id: string;
@@ -11,12 +28,7 @@ interface ExamplePairing {
     image: string;
     price: string;
   };
-  offers: Array<{
-    name: string;
-    image: string;
-    price: string;
-    category: "accessory" | "service" | "warranty" | "subscription";
-  }>;
+  offers: Array<Offer>;
 }
 
 interface ExamplePairingCardProps {
@@ -26,12 +38,18 @@ interface ExamplePairingCardProps {
 
 export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
 
   const categoryColors = {
     accessory: "bg-blue-100 text-blue-700",
     service: "bg-green-100 text-green-700",
     warranty: "bg-purple-100 text-purple-700",
     subscription: "bg-orange-100 text-orange-700",
+  };
+
+  const handleOfferClick = (offer: Offer, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSelectedOffer(offer);
   };
 
   return (
@@ -82,7 +100,8 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: isFlipped ? index * 0.1 : 0 }}
-                  className="flex items-center space-x-3 p-3 bg-surface-50 rounded-xl border border-border"
+                  onClick={(e) => handleOfferClick(offer, e)}
+                  className="flex items-center space-x-3 p-3 bg-surface-50 rounded-xl border border-border cursor-pointer hover:bg-surface-100 hover:shadow-md transition-all duration-200 hover-lift"
                 >
                   <div className="text-2xl">{offer.image}</div>
                   <div className="flex-1 min-w-0">
@@ -93,9 +112,16 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
                       <span className="text-xs font-semibold text-primary">
                         {offer.price}
                       </span>
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[offer.category]}`}>
-                        {offer.category}
-                      </span>
+                      <div className="flex items-center space-x-2">
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[offer.category]}`}>
+                          {offer.category}
+                        </span>
+                        {offer.partner.name !== "Your Store" && (
+                          <span className="text-xs text-muted-foreground">
+                            by {offer.partner.name}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -118,6 +144,13 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
           </div>
         </Card>
       </motion.div>
+
+      {/* Partner Details Modal */}
+      <PartnerDetailsModal
+        isOpen={!!selectedOffer}
+        onClose={() => setSelectedOffer(null)}
+        offer={selectedOffer}
+      />
     </div>
   );
 };
