@@ -1,0 +1,295 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ShoppingCart, Check, Star, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
+interface Product {
+  id: string;
+  name: string;
+  price: string;
+  image: string;
+  benefit: string;
+  category: "webshop" | "partner";
+  provider?: string;
+}
+
+interface PurchasedItem {
+  id: string;
+  name: string;
+  price: string;
+  image: string;
+}
+
+// Mock data for purchased items and their corresponding offers
+const purchasedItems: PurchasedItem[] = [
+  { id: "tv", name: "4K Smart TV", price: "$899", image: "📺" },
+  { id: "espresso", name: "Espresso Machine", price: "$449", image: "☕" },
+  { id: "bike", name: "Road Bike", price: "$1,299", image: "🚴" },
+  { id: "camera", name: "Mirrorless Camera", price: "$1,199", image: "📸" },
+  { id: "vacuum", name: "Robot Vacuum", price: "$399", image: "🤖" },
+];
+
+const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }> = {
+  tv: {
+    webshop: [
+      { id: "hdmi", name: "Premium HDMI 2.1 Cable", price: "$29", image: "🔌", benefit: "Perfect 4K signal", category: "webshop" },
+      { id: "mount", name: "Adjustable Wall Mount", price: "$79", image: "🔧", benefit: "Save space & style", category: "webshop" },
+      { id: "soundbar", name: "Wireless Soundbar", price: "$199", image: "🔊", benefit: "Cinema-quality audio", category: "webshop" },
+    ],
+    partner: [
+      { id: "install", name: "Professional Installation", price: "$149", image: "👨‍🔧", benefit: "Same-day setup", category: "partner", provider: "TechInstall Pro" },
+      { id: "warranty", name: "Extended Warranty 3yr", price: "$199", image: "🛡️", benefit: "Total peace of mind", category: "partner", provider: "SecureGuard" },
+      { id: "calibration", name: "Professional Calibration", price: "$99", image: "🎨", benefit: "Perfect picture quality", category: "partner", provider: "PixelPerfect" },
+    ],
+  },
+  espresso: {
+    webshop: [
+      { id: "grinder", name: "Burr Coffee Grinder", price: "$89", image: "⚙️", benefit: "Perfect grind every time", category: "webshop" },
+      { id: "descaler", name: "Descaling Solution", price: "$19", image: "🧴", benefit: "Keep it running smooth", category: "webshop" },
+      { id: "cups", name: "Espresso Cup Set", price: "$39", image: "☕", benefit: "Professional presentation", category: "webshop" },
+    ],
+    partner: [
+      { id: "course", name: "Barista Masterclass", price: "$79", image: "🎓", benefit: "Learn like a pro", category: "partner", provider: "Coffee Academy" },
+      { id: "beans", name: "Premium Bean Subscription", price: "$29/mo", image: "🌱", benefit: "Fresh roasted monthly", category: "partner", provider: "Origin Roasters" },
+      { id: "maintenance", name: "Annual Maintenance", price: "$119", image: "🔧", benefit: "Keep it perfect", category: "partner", provider: "CoffeeTech Services" },
+    ],
+  },
+  bike: {
+    webshop: [
+      { id: "helmet", name: "Aero Racing Helmet", price: "$159", image: "⛑️", benefit: "Safety meets speed", category: "webshop" },
+      { id: "lights", name: "LED Light Set", price: "$49", image: "💡", benefit: "Ride safely at night", category: "webshop" },
+      { id: "pump", name: "Portable CO2 Pump", price: "$34", image: "🔧", benefit: "Never get stranded", category: "webshop" },
+    ],
+    partner: [
+      { id: "fitting", name: "Professional Bike Fitting", price: "$199", image: "📐", benefit: "Perfect comfort & power", category: "partner", provider: "FitCycle Pro" },
+      { id: "gps", name: "GPS Training App Pro", price: "$9.99/mo", image: "📱", benefit: "Track every ride", category: "partner", provider: "CycleTracker" },
+      { id: "tuneup", name: "Complete Tune-up", price: "$89", image: "🔧", benefit: "Keep it running smooth", category: "partner", provider: "Local Bike Shop" },
+    ],
+  },
+  camera: {
+    webshop: [
+      { id: "lens", name: "85mm Portrait Lens", price: "$399", image: "🔍", benefit: "Professional portraits", category: "webshop" },
+      { id: "tripod", name: "Carbon Fiber Tripod", price: "$199", image: "🦵", benefit: "Rock-solid stability", category: "webshop" },
+      { id: "bag", name: "Weather-proof Camera Bag", price: "$89", image: "🎒", benefit: "Protect your investment", category: "webshop" },
+    ],
+    partner: [
+      { id: "workshop", name: "Photography Workshop", price: "$149", image: "🎓", benefit: "Master your craft", category: "partner", provider: "Photo Academy" },
+      { id: "lightroom", name: "Adobe Creative Suite", price: "$20.99/mo", image: "🎨", benefit: "Professional editing", category: "partner", provider: "Adobe" },
+      { id: "insurance", name: "Equipment Insurance", price: "$19/mo", image: "🛡️", benefit: "Full coverage protection", category: "partner", provider: "GearGuard" },
+    ],
+  },
+  vacuum: {
+    webshop: [
+      { id: "filters", name: "HEPA Filter 3-Pack", price: "$29", image: "🌪️", benefit: "Cleaner air & performance", category: "webshop" },
+      { id: "brushes", name: "Replacement Brush Set", price: "$39", image: "🧽", benefit: "Keep it cleaning perfect", category: "webshop" },
+      { id: "dock", name: "Premium Charging Dock", price: "$79", image: "🔋", benefit: "Always ready to clean", category: "webshop" },
+    ],
+    partner: [
+      { id: "setup", name: "Smart Home Setup", price: "$99", image: "🏠", benefit: "Complete automation", category: "partner", provider: "SmartHome Pro" },
+      { id: "cleaning", name: "Monthly Deep Clean", price: "$149", image: "✨", benefit: "Professional results", category: "partner", provider: "CleanCo Services" },
+      { id: "warranty", name: "Extended Warranty 2yr", price: "$79", image: "🛡️", benefit: "Worry-free cleaning", category: "partner", provider: "RoboGuard" },
+    ],
+  },
+};
+
+interface WidgetDemoProps {
+  purchasedItem?: string;
+  mode?: "webshop" | "partner";
+}
+
+export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDemoProps) => {
+  const [activeTab, setActiveTab] = useState<"webshop" | "partner">(mode);
+  const [selectedItem, setSelectedItem] = useState(purchasedItem);
+  const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    setActiveTab(mode);
+  }, [mode]);
+
+  const currentPurchase = purchasedItems.find(item => item.id === selectedItem) || purchasedItems[0];
+  const currentOffers = productCatalog[selectedItem] || productCatalog.tv;
+
+  const handleAddItem = (productId: string) => {
+    setAddedItems(prev => new Set([...prev, productId]));
+    // Remove after 2 seconds to allow re-adding for demo
+    setTimeout(() => {
+      setAddedItems(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(productId);
+        return newSet;
+      });
+    }, 2000);
+  };
+
+  return (
+    <div className="relative max-w-4xl mx-auto">
+      {/* Device Frame */}
+      <div className="relative bg-surface-100 rounded-3xl p-8 shadow-2xl border border-border">
+        {/* Mock Browser/App Header */}
+        <div className="flex items-center space-x-2 mb-6">
+          <div className="flex space-x-2">
+            <div className="w-3 h-3 rounded-full bg-red-400"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+            <div className="w-3 h-3 rounded-full bg-green-400"></div>
+          </div>
+          <div className="flex-1 bg-surface-200 rounded-full px-4 py-1.5 text-sm text-muted-foreground ml-4">
+            yourstore.com/thank-you
+          </div>
+        </div>
+
+        {/* Thank You Page Content */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-success/10 rounded-full mb-4">
+            <Check className="w-8 h-8 text-success" />
+          </div>
+          <h2 className="text-2xl font-bold text-foreground mb-2">Order Confirmed!</h2>
+          <p className="text-muted-foreground">Thank you for your purchase of the {currentPurchase.name}</p>
+          
+          {/* Purchase Item Selector for Demo */}
+          <div className="mt-6 p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">{currentPurchase.image}</span>
+                <div className="text-left">
+                  <p className="font-semibold text-sm">{currentPurchase.name}</p>
+                  <p className="text-muted-foreground text-xs">{currentPurchase.price}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <select
+                  value={selectedItem}
+                  onChange={(e) => setSelectedItem(e.target.value)}
+                  className="text-xs bg-transparent border-none focus:ring-0 cursor-pointer"
+                >
+                  {purchasedItems.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* AmplifAI Widget */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="relative bg-card rounded-3xl border border-border shadow-xl overflow-hidden"
+        >
+          {/* Widget Header */}
+          <div className="p-6 border-b border-border">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
+                  <ShoppingCart className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">Perfect additions for you</h3>
+                  <p className="text-xs text-muted-foreground">Curated based on your purchase</p>
+                </div>
+              </div>
+              <div className="text-xs text-muted-foreground flex items-center space-x-1">
+                <Clock className="w-3 h-3" />
+                <span>by AmplifAI</span>
+              </div>
+            </div>
+
+            {/* Tab Switcher */}
+            <div className="relative bg-surface-100 rounded-2xl p-1 grid grid-cols-2">
+              <motion.div
+                className="absolute inset-y-1 bg-background rounded-xl shadow-sm border border-border"
+                initial={false}
+                animate={{
+                  x: activeTab === "webshop" ? 0 : "100%",
+                }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              />
+              <button
+                onClick={() => setActiveTab("webshop")}
+                className={`relative z-10 px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                  activeTab === "webshop" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Your Store
+              </button>
+              <button
+                onClick={() => setActiveTab("partner")}
+                className={`relative z-10 px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                  activeTab === "partner" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Partners
+              </button>
+            </div>
+          </div>
+
+          {/* Product Grid */}
+          <div className="p-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-4"
+              >
+                {currentOffers[activeTab].map((product, index) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                  >
+                    <Card className="p-4 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
+                      <div className="text-center mb-3">
+                        <div className="text-3xl mb-2">{product.image}</div>
+                        <h4 className="font-semibold text-sm text-foreground mb-1">{product.name}</h4>
+                        <p className="text-xs text-muted-foreground mb-2">{product.benefit}</p>
+                        {product.provider && (
+                          <p className="text-xs text-brand-violet">by {product.provider}</p>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-foreground">{product.price}</span>
+                          <div className="flex items-center space-x-1 text-xs text-muted-foreground">
+                            <Star className="w-3 h-3 fill-current text-yellow-400" />
+                            <span>4.8</span>
+                          </div>
+                        </div>
+                        <Button
+                          onClick={() => handleAddItem(product.id)}
+                          disabled={addedItems.has(product.id)}
+                          variant={addedItems.has(product.id) ? "secondary" : "default"}
+                          className={`w-full text-xs py-2 transition-all duration-200 ${
+                            addedItems.has(product.id) 
+                              ? "bg-success text-success-foreground hover:bg-success/90" 
+                              : "gradient-primary text-white hover:shadow-md"
+                          }`}
+                        >
+                          {addedItems.has(product.id) ? (
+                            <>
+                              <Check className="w-3 h-3 mr-1" />
+                              Added!
+                            </>
+                          ) : (
+                            "Add in 1 click"
+                          )}
+                        </Button>
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
