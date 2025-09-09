@@ -445,6 +445,251 @@ const examplePairings = [
         }
       }
     ]
+  },
+  {
+    id: "headphones",
+    purchased: {
+      name: "Wireless Headphones",
+      image: "🎧",
+      price: "$299"
+    },
+    offers: [
+      { 
+        name: "Carrying Case Premium", 
+        image: "💼", 
+        price: "$49", 
+        category: "accessory" as const,
+        partner: {
+          name: "Your Store",
+          rating: 4.7,
+          reviews: 1987,
+          description: "Hard shell case with custom foam padding for ultimate protection",
+          availability: "In stock"
+        }
+      },
+      { 
+        name: "Extended Warranty", 
+        image: "🛡️", 
+        price: "$89", 
+        category: "warranty" as const,
+        partner: {
+          name: "AudioGuard Plus",
+          rating: 4.6,
+          reviews: 5432,
+          description: "3-year comprehensive coverage including accidental damage",
+          availability: "Instant activation"
+        }
+      },
+      { 
+        name: "Audio Calibration Service", 
+        image: "🎵", 
+        price: "$79", 
+        category: "service" as const,
+        partner: {
+          name: "SoundTech Experts",
+          rating: 4.9,
+          reviews: 234,
+          description: "Professional hearing test and custom audio profile setup",
+          availability: "Remote session available"
+        }
+      }
+    ]
+  },
+  {
+    id: "smartwatch",
+    purchased: {
+      name: "Fitness Smartwatch",
+      image: "⌚",
+      price: "$399"
+    },
+    offers: [
+      { 
+        name: "Sport Band Collection", 
+        image: "🏃", 
+        price: "$39", 
+        category: "accessory" as const,
+        partner: {
+          name: "Your Store",
+          rating: 4.8,
+          reviews: 3456,
+          description: "Set of 3 breathable sport bands in different colors",
+          availability: "In stock"
+        }
+      },
+      { 
+        name: "Health Coach App Pro", 
+        image: "📱", 
+        price: "$12.99/mo", 
+        category: "subscription" as const,
+        partner: {
+          name: "FitLife Pro",
+          rating: 4.7,
+          reviews: 12389,
+          description: "Personalized workout plans and nutrition tracking",
+          availability: "30-day free trial"
+        }
+      },
+      { 
+        name: "Personal Training Session", 
+        image: "💪", 
+        price: "$129", 
+        category: "service" as const,
+        partner: {
+          name: "Elite Fitness Coaches",
+          rating: 4.9,
+          reviews: 567,
+          description: "1-on-1 fitness assessment and smartwatch optimization",
+          availability: "Book online or in-person"
+        }
+      }
+    ]
+  },
+  {
+    id: "airpurifier",
+    purchased: {
+      name: "HEPA Air Purifier",
+      image: "🌪️",
+      price: "$249"
+    },
+    offers: [
+      { 
+        name: "Replacement Filter 3-Pack", 
+        image: "🔄", 
+        price: "$79", 
+        category: "accessory" as const,
+        partner: {
+          name: "Your Store",
+          rating: 4.8,
+          reviews: 2341,
+          description: "Genuine HEPA filters lasting 6-8 months each",
+          availability: "In stock"
+        }
+      },
+      { 
+        name: "Air Quality Monitor", 
+        image: "📊", 
+        price: "$149", 
+        category: "accessory" as const,
+        partner: {
+          name: "CleanAir Tech",
+          rating: 4.6,
+          reviews: 1234,
+          description: "Real-time PM2.5, VOC, and humidity monitoring with app",
+          availability: "Ships within 2-3 days"
+        }
+      },
+      { 
+        name: "Home Air Quality Assessment", 
+        image: "🏠", 
+        price: "$199", 
+        category: "service" as const,
+        partner: {
+          name: "Indoor Environment Pros",
+          rating: 4.9,
+          reviews: 456,
+          description: "Professional assessment with optimization recommendations",
+          availability: "Schedule within 5 days"
+        }
+      }
+    ]
+  },
+  {
+    id: "standingdesk",
+    purchased: {
+      name: "Electric Standing Desk",
+      image: "🪑",
+      price: "$699"
+    },
+    offers: [
+      { 
+        name: "Ergonomic Accessories Kit", 
+        image: "⌨️", 
+        price: "$99", 
+        category: "accessory" as const,
+        partner: {
+          name: "Your Store",
+          rating: 4.7,
+          reviews: 1876,
+          description: "Monitor arm, keyboard tray, and cable management system",
+          availability: "In stock"
+        }
+      },
+      { 
+        name: "Professional Assembly", 
+        image: "🔧", 
+        price: "$149", 
+        category: "service" as const,
+        partner: {
+          name: "Office Setup Experts",
+          rating: 4.8,
+          reviews: 3421,
+          description: "Complete assembly and ergonomic optimization",
+          availability: "Same-day service available"
+        }
+      },
+      { 
+        name: "Posture Coaching Session", 
+        image: "🧘", 
+        price: "$89", 
+        category: "service" as const,
+        partner: {
+          name: "ErgoHealth Specialists",
+          rating: 4.9,
+          reviews: 234,
+          description: "Virtual consultation on optimal standing desk usage",
+          availability: "Book online sessions"
+        }
+      }
+    ]
+  },
+  {
+    id: "projector",
+    purchased: {
+      name: "4K Home Theater Projector",
+      image: "📽️",
+      price: "$1,499"
+    },
+    offers: [
+      { 
+        name: "Projection Screen 120\"", 
+        image: "🖼️", 
+        price: "$299", 
+        category: "accessory" as const,
+        partner: {
+          name: "Your Store",
+          rating: 4.8,
+          reviews: 987,
+          description: "Motorized retractable screen with remote control",
+          availability: "In stock"
+        }
+      },
+      { 
+        name: "Home Theater Installation", 
+        image: "🏠", 
+        price: "$399", 
+        category: "service" as const,
+        partner: {
+          name: "Cinema Install Pro",
+          rating: 4.9,
+          reviews: 1234,
+          description: "Complete setup including mounting, wiring, and calibration",
+          availability: "Book 3-7 days ahead"
+        }
+      },
+      { 
+        name: "Streaming Service Bundle", 
+        image: "📺", 
+        price: "$24.99/mo", 
+        category: "subscription" as const,
+        partner: {
+          name: "StreamMax Entertainment",
+          rating: 4.6,
+          reviews: 45678,
+          description: "Access to 4 premium streaming platforms with 4K content",
+          availability: "Start immediately"
+        }
+      }
+    ]
   }
 ];
 

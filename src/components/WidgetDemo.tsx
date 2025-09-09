@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Check, Star, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { PaymentModal } from "./PaymentModal";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Product {
   id: string;
@@ -99,9 +101,11 @@ interface WidgetDemoProps {
 }
 
 export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDemoProps) => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"webshop" | "partner">(mode);
   const [selectedItem, setSelectedItem] = useState(purchasedItem);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
+  const [paymentProduct, setPaymentProduct] = useState<{ name: string; price: string; image: string } | null>(null);
 
   useEffect(() => {
     setActiveTab(mode);
@@ -110,16 +114,13 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
   const currentPurchase = purchasedItems.find(item => item.id === selectedItem) || purchasedItems[0];
   const currentOffers = productCatalog[selectedItem] || productCatalog.tv;
 
-  const handleAddItem = (productId: string) => {
-    setAddedItems(prev => new Set([...prev, productId]));
-    // Remove after 2 seconds to allow re-adding for demo
-    setTimeout(() => {
-      setAddedItems(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(productId);
-        return newSet;
-      });
-    }, 2000);
+  const handleAddItem = (product: Product) => {
+    // Show payment modal for demo
+    setPaymentProduct({
+      name: product.name,
+      price: product.price,
+      image: product.image
+    });
   };
 
   return (
@@ -143,8 +144,8 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
           <div className="inline-flex items-center justify-center w-16 h-16 bg-success/10 rounded-full mb-4">
             <Check className="w-8 h-8 text-success" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">Order Confirmed!</h2>
-          <p className="text-muted-foreground">Thank you for your purchase of the {currentPurchase.name}</p>
+          <h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
+          <p className="text-muted-foreground">{t('widget.thankYou')} {currentPurchase.name}</p>
           
           {/* Purchase Item Selector for Demo */}
           <div className="mt-6 p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
@@ -188,13 +189,13 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                   <ShoppingCart className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Perfect additions for you</h3>
-                  <p className="text-xs text-muted-foreground">Curated based on your purchase</p>
+                  <h3 className="font-semibold text-foreground">{t('widget.title')}</h3>
+                  <p className="text-xs text-muted-foreground">{t('widget.subtitle')}</p>
                 </div>
               </div>
               <div className="text-xs text-muted-foreground flex items-center space-x-1">
                 <Clock className="w-3 h-3" />
-                <span>by AmplifAI</span>
+                <span>{t('widget.byAmplif')}</span>
               </div>
             </div>
 
@@ -214,7 +215,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                   activeTab === "webshop" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Your Store
+                {t('widget.yourStore')}
               </button>
               <button
                 onClick={() => setActiveTab("partner")}
@@ -222,7 +223,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                   activeTab === "partner" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Partners
+                {t('widget.partners')}
               </button>
             </div>
           </div>
@@ -263,23 +264,11 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                           </div>
                         </div>
                         <Button
-                          onClick={() => handleAddItem(product.id)}
-                          disabled={addedItems.has(product.id)}
-                          variant={addedItems.has(product.id) ? "secondary" : "default"}
-                          className={`w-full text-xs py-2 transition-all duration-200 ${
-                            addedItems.has(product.id) 
-                              ? "bg-success text-success-foreground hover:bg-success/90" 
-                              : "gradient-primary text-white hover:shadow-md"
-                          }`}
+                          onClick={() => handleAddItem(product)}
+                          variant="default"
+                          className="w-full text-xs py-2 transition-all duration-200 gradient-primary text-white hover:shadow-md"
                         >
-                          {addedItems.has(product.id) ? (
-                            <>
-                              <Check className="w-3 h-3 mr-1" />
-                              Added!
-                            </>
-                          ) : (
-                            "Add in 1 click"
-                          )}
+                          {t('widget.addInOneClick')}
                         </Button>
                       </div>
                     </Card>
@@ -290,6 +279,13 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
           </div>
         </motion.div>
       </div>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={!!paymentProduct}
+        onClose={() => setPaymentProduct(null)}
+        product={paymentProduct}
+      />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Partner {
   name: string;
@@ -34,6 +35,7 @@ const timeSlots = [
 ];
 
 export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsModalProps) => {
+  const { t } = useLanguage();
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isBooked, setIsBooked] = useState(false);
@@ -100,12 +102,12 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
               <div className="bg-surface-50 rounded-xl p-6 border border-border">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-foreground">
-                    {offer.partner.name === "Your Store" ? "Sold by Your Store" : `Partner: ${offer.partner.name}`}
+                    {offer.partner.name === "Your Store" ? t('partner.soldBy') : `${t('partner.partnerBy')} ${offer.partner.name}`}
                   </h3>
                   <div className="flex items-center space-x-1">
                     <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     <span className="font-medium">{offer.partner.rating}</span>
-                    <span className="text-muted-foreground">({offer.partner.reviews.toLocaleString()} reviews)</span>
+                    <span className="text-muted-foreground">({offer.partner.reviews.toLocaleString()} {t('partner.reviews')})</span>
                   </div>
                 </div>
                 <p className="text-muted-foreground mb-3">{offer.partner.description}</p>
@@ -123,7 +125,7 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
                   <div>
                     <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
                       <CalendarIcon className="h-5 w-5 mr-2" />
-                      Book Your Appointment
+                      {t('partner.bookAppointment')}
                     </h3>
                     
                     {/* Calendar */}
@@ -150,7 +152,7 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
                       >
                         <div className="flex items-center space-x-2 text-muted-foreground">
                           <Clock className="h-4 w-4" />
-                          <span>Available times for {selectedDate.toDateString()}</span>
+                          <span>{t('partner.availableTimes')} {selectedDate.toDateString()}</span>
                         </div>
                         <div className="grid grid-cols-4 gap-2">
                           {timeSlots.map((time) => (
@@ -174,7 +176,7 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
               {/* Action Buttons */}
               <div className="flex justify-end space-x-3 pt-6 border-t border-border">
                 <Button variant="outline" onClick={onClose}>
-                  Cancel
+                  {t('payment.cancel')}
                 </Button>
                 {isService ? (
                   <Button
@@ -182,14 +184,14 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
                     disabled={!canBook}
                     className="gradient-primary text-white"
                   >
-                    {canBook ? "Book Appointment" : "Select Date & Time"}
+                    {canBook ? t('partner.bookingBtn') : t('partner.selectDateTime')}
                   </Button>
                 ) : (
                   <Button
                     onClick={handleBooking}
                     className="gradient-primary text-white"
                   >
-                    Add to Cart
+                    {t('partner.addToCart')}
                   </Button>
                 )}
               </div>
@@ -211,7 +213,7 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
                 <CheckCircle className="h-8 w-8 text-green-600" />
               </motion.div>
               <h3 className="text-2xl font-bold text-foreground mb-2">
-                {isService ? "Appointment Booked!" : "Added to Cart!"}
+                {isService ? t('partner.appointmentBooked') : t('partner.addedToCart')}
               </h3>
               <p className="text-muted-foreground">
                 {isService 
