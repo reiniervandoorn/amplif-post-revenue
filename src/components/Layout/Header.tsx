@@ -6,15 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const navigation = [
-  { name: "How It Works", href: "/how-it-works" },
-  { name: "Examples", href: "/examples" },
-  { name: "For Merchants", href: "/merchants" },
-  { name: "For Partners", href: "/partners" },
+  { name: "nav.howItWorks", href: "/how-it-works" },
+  { name: "nav.examples", href: "/examples" },
+  { name: "nav.merchants", href: "/merchants" },
+  { name: "nav.partners", href: "/partners" },
 ];
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -28,8 +29,15 @@ export const Header = () => {
           </Link>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="flex lg:hidden">
+        {/* Language switcher and mobile menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
+            className="flex items-center gap-1 px-2 py-1 rounded-md hover:bg-muted transition-colors text-sm"
+          >
+            <Globe className="h-4 w-4" />
+            <span className="uppercase font-medium">{language}</span>
+          </button>
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground hover:bg-muted transition-colors"
@@ -49,7 +57,7 @@ export const Header = () => {
                 isActive(item.href) ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              {item.name}
+              {t(item.name)}
               {isActive(item.href) && (
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 gradient-primary"
@@ -61,11 +69,18 @@ export const Header = () => {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* Language switcher and CTA Button */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
+          <button
+            onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-muted transition-colors text-sm font-medium"
+          >
+            <Globe className="h-4 w-4" />
+            <span className="uppercase">{language}</span>
+          </button>
           <Link to="/contact">
             <Button className="gradient-primary text-white font-semibold px-6 hover:shadow-lg hover-lift">
-              Join the Beta
+              {t('nav.joinBeta')}
             </Button>
           </Link>
         </div>
@@ -103,7 +118,7 @@ export const Header = () => {
                       className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-muted transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.name}
+                      {t(item.name)}
                     </Link>
                   ))}
                 </div>
@@ -114,7 +129,7 @@ export const Header = () => {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Button className="w-full gradient-primary text-white font-semibold">
-                      Join the Beta
+                      {t('nav.joinBeta')}
                     </Button>
                   </Link>
                 </div>
