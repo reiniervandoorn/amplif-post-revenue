@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { WidgetDemo } from "@/components/WidgetDemo";
 import { MetricStat } from "@/components/MetricStat";
+import { useLanguage } from "@/contexts/LanguageContext";
 const socialProofLogos = [{
   name: "TechCorp",
   logo: "🏢"
@@ -23,18 +24,16 @@ const socialProofLogos = [{
 }];
 const features = [{
   icon: Zap,
-  title: "Lightning Fast",
-  description: "Shows up instantly after purchase. No delays, no friction."
+  key: "lightning"
 }, {
   icon: TrendingUp,
-  title: "AI-Powered Matching",
-  description: "Smart algorithms find the perfect complementary products."
+  key: "ai"
 }, {
   icon: Shield,
-  title: "Brand Safe",
-  description: "Full control over what partners can offer your customers."
+  key: "brand"
 }];
 export default function Home() {
+  const { t } = useLanguage();
   return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-32">
@@ -51,24 +50,21 @@ export default function Home() {
           duration: 0.8
         }} className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Turn your{" "}
-              <span className="gradient-text">Thank-You Page</span>
-              <br />
-              into Instant Revenue
+              {t('home.hero.title')}
             </h1>
             
-            <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">AmplifAI shows highly relevant add-ons from your catalog and trusted partners—right after purchase. 1-click install to increase AOV by 15-40% with zero operational overhead.</p>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">{t('home.hero.subtitle')}</p>
             
             <div className="mt-10 flex items-center justify-center gap-x-6 flex-wrap">
               <Link to="/contact">
                 <Button size="lg" className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift">
-                  Join the Beta
+                  {t('home.hero.joinBeta')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/examples">
                 <Button variant="outline" size="lg" className="px-8 py-4 text-lg hover:bg-muted transition-colors">
-                  See Examples
+                  {t('home.hero.seeExamples')}
                 </Button>
               </Link>
             </div>
@@ -87,10 +83,10 @@ export default function Home() {
         }} className="mt-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                See it in action
+                {t('home.seeInAction')}
               </h2>
               <p className="text-muted-foreground">
-                This is how your thank-you page transforms with AmplifAI
+                {t('home.demo.subtitle')}
               </p>
             </div>
             
@@ -110,17 +106,17 @@ export default function Home() {
         }} className="mt-24">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                Results that speak for themselves
+                {t('home.results.title')}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Our beta merchants are already seeing incredible results with AmplifAI
+                {t('home.results.subtitle')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <MetricStat value={28} suffix="%" label="Average AOV Increase" description="Typical lift in average order value within 30 days" />
-              <MetricStat value={3.2} label="Extra Revenue" prefix="€" suffix="/order" description="Additional revenue per completed order" />
-              <MetricStat value={18} suffix="%" label="Attach Rate" description="Customers who add at least one offer" />
+              <MetricStat value={28} suffix="%" label={t('home.metrics.aov.label')} description={t('home.metrics.aov.desc')} />
+              <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order" description={t('home.metrics.extraRevenue.desc')} />
+              <MetricStat value={18} suffix="%" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
             </div>
           </motion.div>
 
@@ -151,10 +147,10 @@ export default function Home() {
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-4">
-                      {feature.title}
+                      {t(`home.features.${(feature as any).key}.title`)}
                     </h3>
                     <p className="text-muted-foreground">
-                      {feature.description}
+                      {t(`home.features.${(feature as any).key}.desc`)}
                     </p>
                   </Card>
                 </motion.div>)}
@@ -174,7 +170,7 @@ export default function Home() {
         }} className="mt-24">
             <div className="text-center">
               <p className="text-sm font-medium text-muted-foreground mb-8">
-                Trusted by leading e-commerce brands
+                {t('home.socialProof.title')}
               </p>
               <div className="flex items-center justify-center space-x-12 opacity-60">
                 {socialProofLogos.map((company, index) => <motion.div key={company.name} initial={{
@@ -206,15 +202,14 @@ export default function Home() {
             <Card className="relative overflow-hidden gradient-primary text-white p-12 text-center">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold mb-4">
-                  Ready to transform your thank-you page?
+                  {t('home.cta.title')}
                 </h2>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                  Join hundreds of merchants already boosting their revenue with AmplifAI. 
-                  Setup takes less than 5 minutes.
+                  {t('home.cta.subtitle')}
                 </p>
                 <Link to="/contact">
                   <Button size="lg" variant="secondary" className="bg-white text-primary font-semibold px-8 py-4 text-lg hover:bg-white/90 hover-lift">
-                    Get Started Today
+                    {t('home.cta.button')}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

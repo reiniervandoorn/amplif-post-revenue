@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FormData {
   name: string;
@@ -31,6 +32,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -48,13 +50,13 @@ export default function Contact() {
       
       setIsSubmitted(true);
       toast({
-        title: "Application submitted!",
-        description: "We'll reach out within 2 business days.",
+        title: t('contact.successTitle'),
+        description: t('contact.success'),
       });
     } catch (error) {
       toast({
-        title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        title: t('common.error'),
+        description: t('contact.errorMsg'),
         variant: "destructive"
       });
     } finally {
@@ -84,10 +86,10 @@ export default function Contact() {
           </div>
           
           <h1 className="text-3xl font-bold text-foreground mb-4">
-            Thanks for your interest!
+            {t('contact.successTitle')}
           </h1>
           <p className="text-muted-foreground mb-8">
-            We've received your application and will reach out within 2 business days to discuss next steps.
+            {t('contact.success')}
           </p>
           
           <div className="space-y-4 text-left bg-surface-50 rounded-2xl p-6 border border-border">
@@ -134,11 +136,10 @@ export default function Contact() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">
-              <span className="gradient-text">Join the Beta</span>
+              <span className="gradient-text">{t('contact.title')}</span>
             </h1>
             <p className="text-lg leading-8 text-muted-foreground max-w-2xl mx-auto">
-              Ready to transform your thank-you page or join our partner network? 
-              Tell us about your business and let's get started.
+              {t('contact.subtitle')}
             </p>
           </motion.div>
 
@@ -152,7 +153,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* User Type Toggle */}
                 <div className="space-y-3">
-                  <Label className="text-base font-semibold text-foreground">I am a</Label>
+                  <Label className="text-base font-semibold text-foreground">{t('contact.iam')}</Label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
@@ -164,8 +165,8 @@ export default function Contact() {
                       }`}
                     >
                       <div className="text-2xl mb-2">🏪</div>
-                      <div className="font-semibold">Webshop</div>
-                      <div className="text-xs">I sell products online</div>
+                      <div className="font-semibold">{t('contact.merchant')}</div>
+                      <div className="text-xs">{t('contact.merchantDesc')}</div>
                     </button>
                     <button
                       type="button"
@@ -177,8 +178,8 @@ export default function Contact() {
                       }`}
                     >
                       <div className="text-2xl mb-2">🤝</div>
-                      <div className="font-semibold">Partner</div>
-                      <div className="text-xs">I provide services</div>
+                      <div className="font-semibold">{t('contact.partner')}</div>
+                      <div className="text-xs">{t('contact.partnerDesc')}</div>
                     </button>
                   </div>
                 </div>
@@ -186,18 +187,18 @@ export default function Contact() {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-foreground">Name *</Label>
+                    <Label htmlFor="name" className="text-foreground">{t('contact.name')} *</Label>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
-                      placeholder="Your full name"
+                      placeholder={t('contact.name')}
                       required
                       className="bg-background border-border focus:border-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-foreground">Work Email *</Label>
+                    <Label htmlFor="email" className="text-foreground">{t('contact.email')} *</Label>
                     <Input
                       id="email"
                       type="email"
@@ -212,18 +213,18 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-foreground">Company *</Label>
+                    <Label htmlFor="company" className="text-foreground">{t('contact.company')} *</Label>
                     <Input
                       id="company"
                       value={formData.company}
                       onChange={(e) => handleInputChange("company", e.target.value)}
-                      placeholder="Your company name"
+                      placeholder={t('contact.company')}
                       required
                       className="bg-background border-border focus:border-primary"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="website" className="text-foreground">Website</Label>
+                    <Label htmlFor="website" className="text-foreground">{t('contact.website')}</Label>
                     <Input
                       id="website"
                       value={formData.website}
@@ -244,10 +245,10 @@ export default function Contact() {
                   >
                     {formData.userType === "merchant" ? (
                       <div className="space-y-2">
-                        <Label className="text-foreground">E-commerce Platform</Label>
+                        <Label className="text-foreground">{t('contact.platform')}</Label>
                         <Select onValueChange={(value) => handleInputChange("platform", value)}>
                           <SelectTrigger className="bg-background border-border focus:border-primary">
-                            <SelectValue placeholder="Select your platform" />
+                            <SelectValue placeholder={t('contact.selectPlatform')} />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="shopify">Shopify</SelectItem>
@@ -262,10 +263,10 @@ export default function Contact() {
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <Label className="text-foreground">Service Category</Label>
+                        <Label className="text-foreground">{t('contact.category')}</Label>
                         <Select onValueChange={(value) => handleInputChange("category", value)}>
                           <SelectTrigger className="bg-background border-border focus:border-primary">
-                            <SelectValue placeholder="Select your category" />
+                            <SelectValue placeholder={t('contact.selectCategory')} />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="installer">Installation Services</SelectItem>
@@ -295,12 +296,12 @@ export default function Contact() {
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                         className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full mr-2"
                       />
-                      Submitting...
+                      {t('common.submitting')}
                     </>
                   ) : (
                     <>
                       <Sparkles className="w-5 h-5 mr-2" />
-                      Count me in
+                      {t('contact.submit')}
                     </>
                   )}
                 </Button>

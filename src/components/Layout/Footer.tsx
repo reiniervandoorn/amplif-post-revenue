@@ -3,23 +3,24 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const footerLinks = {
   company: [
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
+    { key: "footer.about", href: "/about" },
+    { key: "footer.blog", href: "/blog" },
+    { key: "footer.careers", href: "/careers" },
   ],
   support: [
-    { name: "Help Center", href: "/help" },
-    { name: "Contact", href: "/contact" },
-    { name: "Status", href: "/status" },
+    { key: "footer.help", href: "/help" },
+    { key: "nav.contact", href: "/contact" },
+    { key: "footer.status", href: "/status" },
   ],
   legal: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
+    { key: "footer.privacy", href: "/privacy" },
+    { key: "footer.terms", href: "/terms" },
+    { key: "footer.cookies", href: "/cookies" },
   ],
 };
 
 export const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="bg-surface-50 border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
@@ -30,7 +31,7 @@ export const Footer = () => {
               <span className="text-3xl font-bold gradient-text">AmplifAI</span>
             </div>
             <p className="text-sm leading-6 text-muted-foreground max-w-sm">
-              Transform your thank-you page into a revenue-generating powerhouse with AI-powered upsells from your catalog and trusted partners.
+              {t('footer.tagline')}
             </p>
             <div className="flex space-x-6">
               {/* Add social media icons here if needed */}
@@ -42,16 +43,16 @@ export const Footer = () => {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-foreground">
-                  Company
+                  {t('footer.company')}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerLinks.company.map((item) => (
-                    <li key={item.name}>
+                    <li key={item.key}>
                       <Link
                         to={item.href}
                         className="text-sm leading-6 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        {item.name}
+                        {t(item.key as any)}
                       </Link>
                     </li>
                   ))}
@@ -59,7 +60,7 @@ export const Footer = () => {
               </div>
               <div className="mt-10 md:mt-0">
                 <h3 className="text-sm font-semibold leading-6 text-foreground">
-                  Support
+                  {t('footer.support')}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerLinks.support.map((item) => (
@@ -68,7 +69,7 @@ export const Footer = () => {
                         to={item.href}
                         className="text-sm leading-6 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        {item.name}
+                        {t(item.key as any)}
                       </Link>
                     </li>
                   ))}
@@ -78,7 +79,7 @@ export const Footer = () => {
             <div className="md:grid md:grid-cols-1 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-foreground">
-                  Legal
+                  {t('footer.legal')}
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerLinks.legal.map((item) => (
@@ -87,7 +88,7 @@ export const Footer = () => {
                         to={item.href}
                         className="text-sm leading-6 text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        {item.name}
+                        {t(item.key as any)}
                       </Link>
                     </li>
                   ))}
@@ -105,7 +106,7 @@ export const Footer = () => {
             </p>
             <div className="mt-4 sm:mt-0">
               <p className="text-xs leading-5 text-muted-foreground">
-                Made with ❤️ for ambitious merchants
+                {t('footer.madeWithLove')}
               </p>
             </div>
           </div>

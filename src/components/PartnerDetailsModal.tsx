@@ -7,7 +7,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-interface Partner {
+export interface Partner {
   name: string;
   rating: number;
   reviews: number;
@@ -15,7 +15,7 @@ interface Partner {
   availability: string;
 }
 
-interface Offer {
+export interface Offer {
   name: string;
   image: string;
   price: string;
@@ -82,7 +82,7 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
                     <h2 className="text-2xl font-bold text-foreground">{offer.name}</h2>
                     <div className="flex items-center space-x-2 mt-1">
                       <Badge className={categoryColors[offer.category]}>
-                        {offer.category}
+                        {t(`category.${offer.category}`)}
                       </Badge>
                       <span className="text-2xl font-bold gradient-text">{offer.price}</span>
                     </div>

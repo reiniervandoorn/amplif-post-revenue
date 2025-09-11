@@ -4,6 +4,7 @@ import { RotateCcw, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PartnerDetailsModal } from "./PartnerDetailsModal";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Partner {
   name: string;
@@ -39,6 +40,7 @@ interface ExamplePairingCardProps {
 export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const { t } = useLanguage();
 
   const categoryColors = {
     accessory: "bg-blue-100 text-blue-700",
@@ -76,7 +78,7 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
               <div className="inline-flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full mb-3">
                 <RotateCcw className="w-5 h-5 text-primary" />
               </div>
-              <p className="text-sm text-muted-foreground">Click to see perfect add-ons</p>
+              <p className="text-sm text-muted-foreground">{t('examples.clickToSee')}</p>
             </div>
           </div>
         </Card>
@@ -84,14 +86,14 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
         {/* Back Side - Offers */}
         <Card className="absolute inset-0 backface-hidden bg-card border border-border hover:shadow-lg transition-all duration-200 transform-rotate-y-180">
           <div className="p-6 h-full flex flex-col">
-            <div className="text-center mb-4">
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                Perfect Add-ons
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                for {pairing.purchased.name}
-              </p>
-            </div>
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {t('examples.perfectAddons')}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {t('examples.for')} {pairing.purchased.name}
+                </p>
+              </div>
             
             <div className="flex-1 space-y-3">
               {pairing.offers.map((offer, index) => (
@@ -114,11 +116,11 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
                       </span>
                       <div className="flex items-center space-x-2">
                         <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[offer.category]}`}>
-                          {offer.category}
+                          {t(`category.${offer.category}`)}
                         </span>
                         {offer.partner.name !== "Your Store" && (
                           <span className="text-xs text-muted-foreground">
-                            by {offer.partner.name}
+                            {t('common.by')} {offer.partner.name}
                           </span>
                         )}
                       </div>
@@ -137,7 +139,7 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
                 variant="outline"
                 className="w-full text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-200"
               >
-                Try in Demo
+                {t('examples.tryInDemo')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

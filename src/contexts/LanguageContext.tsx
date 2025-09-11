@@ -116,7 +116,86 @@ const translations = {
     'footer.legal': 'Legal',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
+    'footer.cookies': 'Cookie Policy',
+    'footer.madeWithLove': 'Made with ❤️ for ambitious merchants',
     'footer.tagline': 'Turn your thank-you page into instant revenue with intelligent product recommendations.',
+
+    // Categories
+    'category.accessory': 'Accessory',
+    'category.service': 'Service',
+    'category.warranty': 'Warranty',
+    'category.subscription': 'Subscription',
+    'category.accessories': 'Accessories',
+    'category.services': 'Services',
+    'category.warranties': 'Warranties',
+    'category.subscriptions': 'Subscriptions',
+
+    // Examples extras
+    'examples.activePairings': 'Active Pairings',
+    'examples.examplePairingsTitle': 'Example Pairings',
+    'examples.clickToSee': 'Click to see perfect add-ons',
+    'examples.perfectAddons': 'Perfect Add-ons',
+    'examples.for': 'for',
+    'examples.successStories.title': 'Success Stories',
+    'examples.successStories.subtitle': 'Real results from merchants using these exact pairings',
+    'examples.cta.title': 'Ready to create your own perfect pairings?',
+    'examples.cta.subtitle': 'Start with our proven pairing templates and customize them for your store. Our team will help you identify the best opportunities.',
+    'examples.cta.startBeta': 'Start Your Beta',
+    'examples.cta.tryDemo': 'Try the Demo',
+    'examples.grid.subtitle': 'Click any card to see the perfect complementary offers. Each pairing is designed to add genuine value to your customers.',
+
+    // Common
+    'common.by': 'by',
+    'common.submitting': 'Submitting...',
+    'common.error': 'Something went wrong',
+
+    // Home extras
+    'home.seeInAction': 'See it in action',
+    'home.demo.subtitle': 'This is how your thank-you page transforms with AmplifAI',
+    'home.results.title': 'Results that speak for themselves',
+    'home.results.subtitle': 'Our beta merchants are already seeing incredible results with AmplifAI',
+    'home.metrics.aov.label': 'Average AOV Increase',
+    'home.metrics.aov.desc': 'Typical lift in average order value within 30 days',
+    'home.metrics.extraRevenue.label': 'Extra Revenue',
+    'home.metrics.extraRevenue.desc': 'Additional revenue per completed order',
+    'home.metrics.attachRate.label': 'Attach Rate',
+    'home.metrics.attachRate.desc': 'Customers who add at least one offer',
+    'home.features.lightning.title': 'Lightning Fast',
+    'home.features.lightning.desc': 'Shows up instantly after purchase. No delays, no friction.',
+    'home.features.ai.title': 'AI-Powered Matching',
+    'home.features.ai.desc': 'Smart algorithms find the perfect complementary products.',
+    'home.features.brand.title': 'Brand Safe',
+    'home.features.brand.desc': 'Full control over what partners can offer your customers.',
+    'home.socialProof.title': 'Trusted by leading e-commerce brands',
+    'home.cta.title': 'Ready to transform your thank-you page?',
+    'home.cta.subtitle': 'Join hundreds of merchants already boosting their revenue with AmplifAI. Setup takes less than 5 minutes.',
+    'home.cta.button': 'Get Started Today',
+
+    // How It Works extras
+    'howItWorks.metrics.title': 'Performance Metrics',
+    'howItWorks.metrics.subtitle': 'See the impact AmplifAI can have on your business',
+    'howItWorks.why.title': 'Why Merchants Choose AmplifAI',
+    'howItWorks.faq.title': 'Frequently Asked Questions',
+    'howItWorks.faq.subtitle': 'Everything you need to know about implementing AmplifAI',
+    'howItWorks.cta.title': 'Ready to get started?',
+    'howItWorks.cta.subtitle': 'Join the beta and start generating additional revenue from day one. Setup takes less than 10 minutes.',
+    'howItWorks.cta.button': 'Talk to Us',
+    'howItWorks.step1.details': 'Add our lightweight widget to your thank-you page with a simple code snippet or install our pre-built extensions for popular platforms like Shopify, WooCommerce, and BigCommerce. Takes less than 5 minutes.',
+    'howItWorks.step2.details': 'Our intelligent matching system analyzes the purchased item, customer history, and your business rules to select the most relevant offers from your catalog and trusted partners. All in real-time.',
+    'howItWorks.step3.details': 'Customers can add complementary products with a single click. Payment is processed instantly using their existing checkout session. No re-entering payment details required.',
+
+    // Contact extras
+    'contact.successTitle': 'Application submitted!',
+    'contact.iam': 'I am a',
+    'contact.merchantDesc': 'I sell products online',
+    'contact.partnerDesc': 'I provide services',
+    'contact.selectPlatform': 'Select your platform',
+    'contact.selectCategory': 'Select your category',
+    'contact.errorMsg': 'Please try again or contact us directly.',
+
+    // Not Found
+    'notfound.title': 'Oops! Page not found',
+    'notfound.back': 'Return to Home',
   },
   nl: {
     // Navigation
@@ -223,9 +302,88 @@ const translations = {
     'footer.help': 'Help Center',
     'footer.status': 'Status',
     'footer.legal': 'Juridisch',
-    'footer.privacy': 'Privacy Beleid',
+    'footer.privacy': 'Privacybeleid',
     'footer.terms': 'Algemene Voorwaarden',
+    'footer.cookies': 'Cookiebeleid',
+    'footer.madeWithLove': 'Gemaakt met ❤️ voor ambitieuze merchants',
     'footer.tagline': 'Maak van je bedankpagina direct omzet met intelligente productaanbevelingen.',
+
+    // Categories
+    'category.accessory': 'Accessoire',
+    'category.service': 'Service',
+    'category.warranty': 'Garantie',
+    'category.subscription': 'Abonnement',
+    'category.accessories': 'Accessoires',
+    'category.services': 'Services',
+    'category.warranties': 'Garanties',
+    'category.subscriptions': 'Abonnementen',
+
+    // Examples extras
+    'examples.activePairings': 'Actieve combinaties',
+    'examples.examplePairingsTitle': 'Voorbeeldcombinaties',
+    'examples.clickToSee': 'Klik om perfecte add-ons te zien',
+    'examples.perfectAddons': 'Perfecte add-ons',
+    'examples.for': 'voor',
+    'examples.successStories.title': 'Succesverhalen',
+    'examples.successStories.subtitle': 'Echte resultaten van merchants die deze combinaties gebruiken',
+    'examples.cta.title': 'Klaar om je eigen perfecte combinaties te maken?',
+    'examples.cta.subtitle': 'Begin met onze bewezen combinaties en pas ze aan voor jouw winkel. Ons team helpt je de beste kansen te identificeren.',
+    'examples.cta.startBeta': 'Start je Beta',
+    'examples.cta.tryDemo': 'Probeer de Demo',
+    'examples.grid.subtitle': 'Klik op een kaart om de perfecte aanvullende aanbiedingen te zien. Elke combinatie voegt echte waarde toe voor je klanten.',
+
+    // Common
+    'common.by': 'door',
+    'common.submitting': 'Verzenden...',
+    'common.error': 'Er is iets misgegaan',
+
+    // Home extras
+    'home.seeInAction': 'Bekijk het in actie',
+    'home.demo.subtitle': 'Zo verandert je bedankpagina met AmplifAI',
+    'home.results.title': 'Resultaten die voor zich spreken',
+    'home.results.subtitle': 'Onze beta-merchants zien al geweldige resultaten met AmplifAI',
+    'home.metrics.aov.label': 'Gemiddelde AOV-stijging',
+    'home.metrics.aov.desc': 'Typische stijging van de gemiddelde bestelwaarde binnen 30 dagen',
+    'home.metrics.extraRevenue.label': 'Extra Omzet',
+    'home.metrics.extraRevenue.desc': 'Extra omzet per afgeronde bestelling',
+    'home.metrics.attachRate.label': 'Attach-rate',
+    'home.metrics.attachRate.desc': 'Klanten die minstens één aanbod toevoegen',
+    'home.features.lightning.title': 'Bliksemsnel',
+    'home.features.lightning.desc': 'Verschijnt direct na aankoop. Geen vertraging, geen frictie.',
+    'home.features.ai.title': 'AI-gestuurde Matching',
+    'home.features.ai.desc': 'Slimme algoritmes vinden de perfecte aanvullende producten.',
+    'home.features.brand.title': 'Merkveilig',
+    'home.features.brand.desc': 'Volledige controle over wat partners jouw klanten aanbieden.',
+    'home.socialProof.title': 'Vertrouwd door toonaangevende e-commerce merken',
+    'home.cta.title': 'Klaar om je bedankpagina te transformeren?',
+    'home.cta.subtitle': 'Sluit je aan bij honderden merchants die hun omzet al verhogen met AmplifAI. Installatie duurt minder dan 5 minuten.',
+    'home.cta.button': 'Begin vandaag nog',
+
+    // How It Works extras
+    'howItWorks.metrics.title': 'Prestatiecijfers',
+    'howItWorks.metrics.subtitle': 'Zie welke impact AmplifAI op je business kan hebben',
+    'howItWorks.why.title': 'Waarom merchants kiezen voor AmplifAI',
+    'howItWorks.faq.title': 'Veelgestelde Vragen',
+    'howItWorks.faq.subtitle': 'Alles wat je moet weten over de implementatie van AmplifAI',
+    'howItWorks.cta.title': 'Klaar om te starten?',
+    'howItWorks.cta.subtitle': 'Doe mee aan de beta en genereer vanaf dag één extra omzet. Installatie duurt minder dan 10 minuten.',
+    'howItWorks.cta.button': 'Neem contact op',
+    'howItWorks.step1.details': 'Voeg onze lichtgewicht widget toe aan je bedankpagina met een eenvoudige code snippet of gebruik onze kant-en-klare extensies voor Shopify, WooCommerce en BigCommerce. Duurt minder dan 5 minuten.',
+    'howItWorks.step2.details': 'Ons intelligente matchingsysteem analyseert de aankoop, klantgeschiedenis en jouw bedrijfsregels om de meest relevante aanbiedingen te selecteren. Alles in real-time.',
+    'howItWorks.step3.details': 'Klanten kunnen met één klik aanvullende producten toevoegen. Betaling wordt direct verwerkt via hun bestaande checkoutsessie. Geen betaalgegevens opnieuw invoeren.',
+
+    // Contact extras
+    'contact.successTitle': 'Aanmelding verzonden!',
+    'contact.iam': 'Ik ben een',
+    'contact.merchantDesc': 'Ik verkoop producten online',
+    'contact.partnerDesc': 'Ik bied diensten aan',
+    'contact.selectPlatform': 'Selecteer je platform',
+    'contact.selectCategory': 'Selecteer je categorie',
+    'contact.errorMsg': 'Probeer het opnieuw of neem direct contact met ons op.',
+
+    // Not Found
+    'notfound.title': 'Oeps! Pagina niet gevonden',
+    'notfound.back': 'Terug naar Home',
   }
 };
 

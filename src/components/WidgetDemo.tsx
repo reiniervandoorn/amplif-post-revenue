@@ -4,6 +4,7 @@ import { ShoppingCart, Check, Star, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PaymentModal } from "./PaymentModal";
+import { PartnerDetailsModal, type Offer as PartnerOffer, type Partner as PartnerEntity } from "./PartnerDetailsModal";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Product {
@@ -106,6 +107,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
   const [selectedItem, setSelectedItem] = useState(purchasedItem);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
   const [paymentProduct, setPaymentProduct] = useState<{ name: string; price: string; image: string } | null>(null);
+  const [serviceOffer, setServiceOffer] = useState<PartnerOffer | null>(null);
 
   useEffect(() => {
     setActiveTab(mode);
@@ -114,8 +116,40 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
   const currentPurchase = purchasedItems.find(item => item.id === selectedItem) || purchasedItems[0];
   const currentOffers = productCatalog[selectedItem] || productCatalog.tv;
 
+  const serviceIds = new Set(["install", "maintenance", "fitting", "tuneup", "setup", "assembly", "workshop", "course"]);
+  const isServiceProduct = (p: Product) => p.category === "partner" && (serviceIds.has(p.id) || /install|setup|fit|maintenance|tune|class|workshop|course/i.test(p.name));
+
+  const partnerDefaults: Record<string, PartnerEntity> = {
+    "TechInstall Pro": { name: "TechInstall Pro", rating: 4.8, reviews: 2847, description: "Trusted installation professionals in your area", availability: "Same-day installation available" },
+    "SecureGuard": { name: "SecureGuard", rating: 4.6, reviews: 8934, description: "Trusted warranty provider with comprehensive coverage", availability: "Instant activation" },
+    "PixelPerfect": { name: "PixelPerfect", rating: 4.7, reviews: 1204, description: "Professional calibration for stunning picture quality", availability: "Appointments this week" },
+    "Coffee Academy": { name: "Coffee Academy", rating: 4.9, reviews: 456, description: "Hands-on barista training by experts", availability: "Weekend slots available" },
+    "Origin Roasters": { name: "Origin Roasters", rating: 4.8, reviews: 2091, description: "Fresh beans delivered monthly", availability: "Start anytime" },
+    "FitCycle Pro": { name: "FitCycle Pro", rating: 4.9, reviews: 789, description: "Get the perfect bike fit for comfort & power", availability: "Book your 90-minute session" },
+    "CycleTracker": { name: "CycleTracker", rating: 4.6, reviews: 15632, description: "Track every ride with pro analytics", availability: "Start today" },
+    "Local Bike Shop": { name: "Local Bike Shop", rating: 4.8, reviews: 2156, description: "Keep your bike running smooth", availability: "Next-day service available" },
+    "Photo Academy": { name: "Photo Academy", rating: 4.9, reviews: 234, description: "Master your craft with expert guidance", availability: "Weekend workshops" },
+    "Adobe": { name: "Adobe", rating: 4.4, reviews: 125843, description: "Professional editing suite", availability: "Instant access" },
+    "GearGuard": { name: "GearGuard", rating: 4.7, reviews: 5432, description: "Full coverage for your gear", availability: "Activate now" },
+    "SmartHome Pro": { name: "SmartHome Pro", rating: 4.7, reviews: 3421, description: "Complete home automation setup", availability: "Same-week setup" },
+    "CleanCo Services": { name: "CleanCo Services", rating: 4.7, reviews: 8765, description: "Professional cleaning services", availability: "Book recurring service" },
+    "RoboGuard": { name: "RoboGuard", rating: 4.6, reviews: 1543, description: "Extended protection for your robot vac", availability: "Instant activation" },
+  };
+
+  const toPartnerOffer = (p: Product): PartnerOffer => ({
+    name: p.name,
+    image: p.image,
+    price: p.price,
+    category: "service",
+    partner: partnerDefaults[p.provider || "TechInstall Pro"] || { name: p.provider || "Trusted Partner", rating: 4.7, reviews: 500, description: "Trusted service provider", availability: "Available this week" }
+  });
+
   const handleAddItem = (product: Product) => {
-    // Show payment modal for demo
+    if (isServiceProduct(product)) {
+      setServiceOffer(toPartnerOffer(product));
+      return;
+    }
+    // Show payment modal for non-service items
     setPaymentProduct({
       name: product.name,
       price: product.price,
@@ -251,8 +285,8 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                         <div className="text-3xl mb-2">{product.image}</div>
                         <h4 className="font-semibold text-sm text-foreground mb-1">{product.name}</h4>
                         <p className="text-xs text-muted-foreground mb-2">{product.benefit}</p>
-                        {product.provider && (
-                          <p className="text-xs text-brand-violet">by {product.provider}</p>
+                         {product.provider && (
+                          <p className="text-xs text-brand-violet">{t('common.by')} {product.provider}</p>
                         )}
                       </div>
                       <div className="space-y-2">
@@ -285,6 +319,13 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
         isOpen={!!paymentProduct}
         onClose={() => setPaymentProduct(null)}
         product={paymentProduct}
+      />
+
+      {/* Service Booking Modal */}
+      <PartnerDetailsModal
+        isOpen={!!serviceOffer}
+        onClose={() => setServiceOffer(null)}
+        offer={serviceOffer}
       />
     </div>
   );

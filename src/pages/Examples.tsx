@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ExamplePairingCard } from "@/components/ExamplePairingCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const examplePairings = [
   {
@@ -694,13 +695,14 @@ const examplePairings = [
 ];
 
 const categories = [
-  { name: "Accessories", count: 14, color: "bg-blue-100 text-blue-700" },
-  { name: "Services", count: 18, color: "bg-green-100 text-green-700" },
-  { name: "Warranties", count: 8, color: "bg-purple-100 text-purple-700" },
-  { name: "Subscriptions", count: 12, color: "bg-orange-100 text-orange-700" }
+  { name: t('category.accessories'), count: 14, color: "bg-blue-100 text-blue-700" },
+  { name: t('category.services'), count: 18, color: "bg-green-100 text-green-700" },
+  { name: t('category.warranties'), count: 8, color: "bg-purple-100 text-purple-700" },
+  { name: t('category.subscriptions'), count: 12, color: "bg-orange-100 text-orange-700" }
 ];
 
 export default function Examples() {
+  const { t } = useLanguage();
   const handleTryDemo = (itemId: string) => {
     // Navigate to home with the selected item
     window.location.href = `/#demo?item=${itemId}`;
@@ -718,11 +720,10 @@ export default function Examples() {
             className="text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-              Perfect <span className="gradient-text">Pairing Examples</span>
+              {t('examples.title')}
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-              See how AmplifAI creates perfect product pairings across different categories. 
-              Each pairing is intelligently matched to maximize value for your customers.
+              {t('examples.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -738,10 +739,10 @@ export default function Examples() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Offer Categories
+              {t('examples.categories.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AmplifAI supports multiple types of complementary offers to maximize your revenue potential
+              {t('examples.categories.subtitle')}
             </p>
           </motion.div>
 
@@ -759,7 +760,7 @@ export default function Examples() {
                     {category.name}
                   </div>
                   <p className="text-2xl font-bold text-foreground">{category.count}</p>
-                  <p className="text-sm text-muted-foreground">Active Pairings</p>
+                  <p className="text-sm text-muted-foreground">{t('examples.activePairings')}</p>
                 </div>
               </motion.div>
             ))}
@@ -777,10 +778,10 @@ export default function Examples() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Example Pairings
+              {t('examples.examplePairingsTitle')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Click any card to see the perfect complementary offers. Each pairing is designed to add genuine value to your customers.
+              {t('examples.grid.subtitle')}
             </p>
           </motion.div>
 
@@ -811,12 +812,12 @@ export default function Examples() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Success Stories
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real results from merchants using these exact pairings
-            </p>
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                {t('examples.successStories.title')}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                {t('examples.successStories.subtitle')}
+              </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -889,35 +890,34 @@ export default function Examples() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="bg-gradient-to-r from-brand-indigo/10 via-brand-violet/10 to-brand-fuchsia/10 rounded-3xl p-12 border border-border">
-              <h2 className="text-3xl font-bold text-foreground mb-4">
-                Ready to create your own perfect pairings?
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Start with our proven pairing templates and customize them for your store. 
-                Our team will help you identify the best opportunities.
-              </p>
-              <div className="flex items-center justify-center gap-4 flex-wrap">
-                <Link to="/contact">
-                  <Button 
-                    size="lg"
-                    className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift"
-                  >
-                    Start Your Beta
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link to="/">
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="px-8 py-4 text-lg hover:bg-muted transition-colors"
-                  >
-                    Try the Demo
-                  </Button>
-                </Link>
+              <div className="bg-gradient-to-r from-brand-indigo/10 via-brand-violet/10 to-brand-fuchsia/10 rounded-3xl p-12 border border-border">
+                <h2 className="text-3xl font-bold text-foreground mb-4">
+                  {t('examples.cta.title')}
+                </h2>
+                <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  {t('examples.cta.subtitle')}
+                </p>
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  <Link to="/contact">
+                    <Button 
+                      size="lg"
+                      className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift"
+                    >
+                      {t('examples.cta.startBeta')}
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/">
+                    <Button 
+                      variant="outline" 
+                      size="lg"
+                      className="px-8 py-4 text-lg hover:bg-muted transition-colors"
+                    >
+                      {t('examples.cta.tryDemo')}
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
           </motion.div>
         </div>
       </section>

@@ -5,25 +5,26 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MetricStat } from "@/components/MetricStat";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const steps = [
   {
     icon: Code,
-    title: "Install",
-    description: "One-line snippet or checkout extension",
-    details: "Add our lightweight widget to your thank-you page with a simple code snippet or install our pre-built extensions for popular platforms like Shopify, WooCommerce, and BigCommerce. Takes less than 5 minutes."
+    titleKey: 'howItWorks.step1.title',
+    descriptionKey: 'howItWorks.step1.desc',
+    detailsKey: 'howItWorks.step1.details'
   },
   {
     icon: Brain,
-    title: "Match",
-    description: "AI + rules choose the best 3 offers",
-    details: "Our intelligent matching system analyzes the purchased item, customer history, and your business rules to select the most relevant offers from your catalog and trusted partners. All in real-time."
+    titleKey: 'howItWorks.step2.title',
+    descriptionKey: 'howItWorks.step2.desc',
+    detailsKey: 'howItWorks.step2.details'
   },
   {
     icon: CreditCard,
-    title: "Convert",
-    description: "1-2 click add-on purchase",
-    details: "Customers can add complementary products with a single click. Payment is processed instantly using their existing checkout session. No re-entering payment details required."
+    titleKey: 'howItWorks.step3.title',
+    descriptionKey: 'howItWorks.step3.desc',
+    detailsKey: 'howItWorks.step3.details'
   },
 ];
 
@@ -69,6 +70,7 @@ const features = [
 ];
 
 export default function HowItWorks() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -81,11 +83,10 @@ export default function HowItWorks() {
             className="text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-              How <span className="gradient-text">AmplifAI</span> Works
+              {t('howItWorks.title')}
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-              Transform your thank-you page into a revenue generator in three simple steps. 
-              No complex setup, no operational overhead.
+              {t('howItWorks.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -114,15 +115,15 @@ export default function HowItWorks() {
                       <step.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {step.title}
+                      {t(step.titleKey as any)}
                     </h3>
                     <p className="text-lg text-muted-foreground mb-4">
-                      {step.description}
+                      {t(step.descriptionKey as any)}
                     </p>
                   </div>
                   
                   <p className="text-sm text-muted-foreground">
-                    {step.details}
+                    {t(step.detailsKey as any)}
                   </p>
                 </Card>
               </motion.div>
@@ -141,10 +142,10 @@ export default function HowItWorks() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Performance Metrics
+              {t('howItWorks.metrics.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              See the impact AmplifAI can have on your business
+              {t('howItWorks.metrics.subtitle')}
             </p>
           </motion.div>
 
@@ -186,7 +187,7 @@ export default function HowItWorks() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Why Merchants Choose AmplifAI
+              {t('howItWorks.why.title')}
             </h2>
           </motion.div>
 
@@ -225,10 +226,10 @@ export default function HowItWorks() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
+              {t('howItWorks.faq.title')}
             </h2>
             <p className="text-muted-foreground">
-              Everything you need to know about implementing AmplifAI
+              {t('howItWorks.faq.subtitle')}
             </p>
           </motion.div>
 
@@ -268,11 +269,10 @@ export default function HowItWorks() {
             <Card className="relative overflow-hidden gradient-primary text-white p-12 text-center">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold mb-4">
-                  Ready to get started?
+                  {t('howItWorks.cta.title')}
                 </h2>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                  Join the beta and start generating additional revenue from day one. 
-                  Setup takes less than 10 minutes.
+                  {t('howItWorks.cta.subtitle')}
                 </p>
                 <Link to="/contact">
                   <Button 
@@ -280,7 +280,7 @@ export default function HowItWorks() {
                     variant="secondary"
                     className="bg-white text-primary font-semibold px-8 py-4 text-lg hover:bg-white/90 hover-lift"
                   >
-                    Talk to Us
+                    {t('howItWorks.cta.button')}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
