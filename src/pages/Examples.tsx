@@ -696,12 +696,12 @@ const examplePairings = [
 
 
 export default function Examples() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const categories = [
-    { name: t('category.accessories'), count: 14, color: "bg-blue-100 text-blue-700" },
-    { name: t('category.services'), count: 18, color: "bg-green-100 text-green-700" },
-    { name: t('category.warranties'), count: 8, color: "bg-purple-100 text-purple-700" },
-    { name: t('category.subscriptions'), count: 12, color: "bg-orange-100 text-orange-700" }
+    { name: translate('category.accessories'), count: 14, color: "bg-blue-100 text-blue-700" },
+    { name: translate('category.services'), count: 18, color: "bg-green-100 text-green-700" },
+    { name: translate('category.warranties'), count: 8, color: "bg-purple-100 text-purple-700" },
+    { name: translate('category.subscriptions'), count: 12, color: "bg-orange-100 text-orange-700" }
   ];
   const handleTryDemo = (itemId: string) => {
     // Navigate to home with the selected item
@@ -720,10 +720,10 @@ export default function Examples() {
             className="text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-              {t('examples.title')}
+              {translate('examples.title')}
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-              {t('examples.subtitle')}
+              {translate('examples.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -739,10 +739,10 @@ export default function Examples() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              {t('examples.categories.title')}
+              {translate('examples.categories.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('examples.categories.subtitle')}
+              {translate('examples.categories.subtitle')}
             </p>
           </motion.div>
 
@@ -760,7 +760,7 @@ export default function Examples() {
                     {category.name}
                   </div>
                   <p className="text-2xl font-bold text-foreground">{category.count}</p>
-                  <p className="text-sm text-muted-foreground">{t('examples.activePairings')}</p>
+                  <p className="text-sm text-muted-foreground">{translate('examples.activePairings')}</p>
                 </div>
               </motion.div>
             ))}
@@ -778,10 +778,10 @@ export default function Examples() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              {t('examples.examplePairingsTitle')}
+              {translate('examples.examplePairingsTitle')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('examples.grid.subtitle')}
+              {translate('examples.grid.subtitle')}
             </p>
           </motion.div>
 
@@ -813,10 +813,10 @@ export default function Examples() {
             className="text-center mb-16"
           >
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                {t('examples.successStories.title')}
+                {translate('examples.successStories.title')}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                {t('examples.successStories.subtitle')}
+                {translate('examples.successStories.subtitle')}
               </p>
           </motion.div>
 
@@ -892,10 +892,10 @@ export default function Examples() {
           >
               <div className="bg-gradient-to-r from-brand-indigo/10 via-brand-violet/10 to-brand-fuchsia/10 rounded-3xl p-12 border border-border">
                 <h2 className="text-3xl font-bold text-foreground mb-4">
-                  {t('examples.cta.title')}
+                  {translate('examples.cta.title')}
                 </h2>
                 <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  {t('examples.cta.subtitle')}
+                  {translate('examples.cta.subtitle')}
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-wrap">
                   <Link to="/contact">
@@ -903,7 +903,7 @@ export default function Examples() {
                       size="lg"
                       className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift"
                     >
-                      {t('examples.cta.startBeta')}
+                      {translate('examples.cta.startBeta')}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
@@ -913,7 +913,7 @@ export default function Examples() {
                       size="lg"
                       className="px-8 py-4 text-lg hover:bg-muted transition-colors"
                     >
-                      {t('examples.cta.tryDemo')}
+                      {translate('examples.cta.tryDemo')}
                     </Button>
                   </Link>
                 </div>
