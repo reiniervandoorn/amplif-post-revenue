@@ -5,87 +5,88 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MetricStat } from "@/components/MetricStat";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const valueProps = [
+const getValueProps = (t: (key: string) => string) => [
   {
     icon: DollarSign,
-    title: "Found Margin, Zero Extra Ops",
-    description: "Generate additional revenue without inventory, shipping, or customer service overhead. Pure margin on every add-on sale."
+    titleKey: "merchants.valueProps.foundMargin.title",
+    descriptionKey: "merchants.valueProps.foundMargin.desc"
   },
   {
     icon: Shield,
-    title: "Brand-Safe Controls",
-    description: "Full control over partner offers with allow/deny lists, category restrictions, and brand guidelines. Maintain your reputation."
+    titleKey: "merchants.valueProps.brandSafe.title", 
+    descriptionKey: "merchants.valueProps.brandSafe.desc"
   },
   {
     icon: Clock,
-    title: "1-Day Go-Live, 7-Day ROI",
-    description: "Quick integration with immediate results. Most merchants see positive ROI within their first week of going live."
+    titleKey: "merchants.valueProps.fastGoLive.title",
+    descriptionKey: "merchants.valueProps.fastGoLive.desc"
   },
   {
     icon: TrendingUp,
-    title: "AI-Powered Optimization",
-    description: "Our machine learning continuously improves offer relevance and timing to maximize conversion rates."
+    titleKey: "merchants.valueProps.aiPowered.title",
+    descriptionKey: "merchants.valueProps.aiPowered.desc"
   },
   {
     icon: BarChart,
-    title: "Comprehensive Analytics",
-    description: "Real-time dashboard showing performance metrics, revenue attribution, and optimization opportunities."
+    titleKey: "merchants.valueProps.analytics.title",
+    descriptionKey: "merchants.valueProps.analytics.desc"
   },
   {
     icon: Settings,
-    title: "Seamless Integration",
-    description: "Works with all major e-commerce platforms. No disruption to your existing checkout flow or customer experience."
+    titleKey: "merchants.valueProps.integration.title",
+    descriptionKey: "merchants.valueProps.integration.desc"
   },
 ];
 
-const integrationSteps = [
+const getIntegrationSteps = (t: (key: string) => string) => [
   {
-    title: "Connect Your Store",
-    description: "Install our lightweight snippet or platform-specific app",
-    timeline: "5 minutes"
+    titleKey: "merchants.integration.step1.title",
+    descriptionKey: "merchants.integration.step1.desc",
+    timelineKey: "merchants.integration.step1.timeline"
   },
   {
-    title: "Configure Preferences", 
-    description: "Set your brand guidelines and partner preferences",
-    timeline: "10 minutes"
+    titleKey: "merchants.integration.step2.title",
+    descriptionKey: "merchants.integration.step2.desc", 
+    timelineKey: "merchants.integration.step2.timeline"
   },
   {
-    title: "Go Live",
-    description: "Start showing relevant offers to your customers",
-    timeline: "Instant"
+    titleKey: "merchants.integration.step3.title",
+    descriptionKey: "merchants.integration.step3.desc",
+    timelineKey: "merchants.integration.step3.timeline"
   },
   {
-    title: "See Results",
-    description: "Monitor performance and optimize your strategy",
-    timeline: "7 days"
+    titleKey: "merchants.integration.step4.title",
+    descriptionKey: "merchants.integration.step4.desc",
+    timelineKey: "merchants.integration.step4.timeline"
   },
 ];
 
-const faqItems = [
+const getFaqItems = (t: (key: string) => string) => [
   {
-    question: "What e-commerce platforms do you support?",
-    answer: "AmplifAI works with all major platforms including Shopify, WooCommerce, Magento, BigCommerce, Salesforce Commerce Cloud, and custom builds. We provide native integrations and universal JavaScript snippets."
+    questionKey: "merchants.faq.platforms.q",
+    answerKey: "merchants.faq.platforms.a"
   },
   {
-    question: "How do refunds work?",
-    answer: "Our refund coupling system automatically handles add-on refunds when the original item is returned. If customers return the main product, any related add-ons are refunded proportionally, maintaining complete transaction integrity."
+    questionKey: "merchants.faq.refunds.q",
+    answerKey: "merchants.faq.refunds.a"
   },
   {
-    question: "What control do I have over partner offers?",
-    answer: "Complete control. You can set category restrictions, maintain allow/deny lists for specific partners, require approval for new offers, and ensure all partner communications follow your brand guidelines."
+    questionKey: "merchants.faq.control.q",
+    answerKey: "merchants.faq.control.a"
   },
   {
-    question: "How are partners vetted?",
-    answer: "All partners go through our comprehensive KYC process including business license verification, insurance checks, customer review analysis, and financial standing assessment. Only high-quality, reliable partners are approved."
+    questionKey: "merchants.faq.vetting.q",
+    answerKey: "merchants.faq.vetting.a"
   },
   {
-    question: "What's the revenue split?",
-    answer: "You earn a commission on all partner sales generated through your customers, typically 10-25% depending on the service category. There are no upfront costs or monthly fees - you only pay when you earn."
+    questionKey: "merchants.faq.revenue.q",
+    answerKey: "merchants.faq.revenue.a"
   },
   {
-    question: "Can I customize the widget design?",
-    answer: "Yes, the widget is fully customizable to match your brand colors, fonts, and styling. We also offer A/B testing tools to optimize the design for maximum conversion."
+    questionKey: "merchants.faq.design.q",
+    answerKey: "merchants.faq.design.a"
   },
 ];
 
@@ -99,6 +100,11 @@ const platforms = [
 ];
 
 export default function Merchants() {
+  const { t } = useLanguage();
+  const valueProps = getValueProps(t);
+  const integrationSteps = getIntegrationSteps(t);
+  const faqItems = getFaqItems(t);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -110,12 +116,10 @@ export default function Merchants() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-              For <span className="gradient-text">Merchants</span>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl" dangerouslySetInnerHTML={{ __html: t('merchants.hero.title') }}>
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-              Turn your thank-you page into a revenue powerhouse. Add 15-40% to your average order value 
-              with zero operational overhead and complete brand control.
+              {t('merchants.hero.subtitle')}
             </p>
             <div className="mt-10">
               <Link to="/contact">
@@ -123,7 +127,7 @@ export default function Merchants() {
                   size="lg"
                   className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift"
                 >
-                  Start Your Free Trial
+                  {t('merchants.hero.startTrial')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -142,17 +146,17 @@ export default function Merchants() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Why Merchants Love AmplifAI
+              {t('merchants.valueProps.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to generate additional revenue without additional work
+              {t('merchants.valueProps.subtitle')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {valueProps.map((prop, index) => (
               <motion.div
-                key={prop.title}
+                key={prop.titleKey}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -162,10 +166,10 @@ export default function Merchants() {
                     <prop.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">
-                    {prop.title}
+                    {t(prop.titleKey)}
                   </h3>
                   <p className="text-muted-foreground">
-                    {prop.description}
+                    {t(prop.descriptionKey)}
                   </p>
                 </Card>
               </motion.div>
@@ -184,10 +188,10 @@ export default function Merchants() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Merchant Results
+              {t('merchants.results.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real results from merchants using AmplifAI
+              {t('merchants.results.subtitle')}
             </p>
           </motion.div>
 
@@ -195,25 +199,25 @@ export default function Merchants() {
             <MetricStat
               value={32}
               suffix="%"
-              label="Avg AOV Increase"
-              description="Typical lift after 30 days"
+              label={t('merchants.results.aovIncrease')}
+              description={t('merchants.results.aovDesc')}
             />
             <MetricStat
               value={18}
               suffix="%"
-              label="Attach Rate"
-              description="Customers adding offers"
+              label={t('merchants.results.attachRate')}
+              description={t('merchants.results.attachDesc')}
             />
             <MetricStat
               value={89}
               prefix="€"
-              label="Revenue Per Order"
-              description="Additional earnings"
+              label={t('merchants.results.revenuePerOrder')}
+              description={t('merchants.results.revenueDesc')}
             />
             <MetricStat
               value={7}
-              label="Days to ROI"
-              description="Break-even timeline"
+              label={t('merchants.results.daysToROI')}
+              description={t('merchants.results.roiDesc')}
             />
           </div>
         </div>
@@ -229,17 +233,17 @@ export default function Merchants() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Getting Started Is Simple
+              {t('merchants.integration.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              From setup to first sale in under 30 minutes
+              {t('merchants.integration.subtitle')}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {integrationSteps.map((step, index) => (
               <motion.div
-                key={step.title}
+                key={step.titleKey}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -253,13 +257,13 @@ export default function Merchants() {
                     )}
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {step.title}
+                    {t(step.titleKey)}
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    {step.description}
+                    {t(step.descriptionKey)}
                   </p>
                   <div className="inline-flex px-3 py-1 bg-success/10 text-success rounded-full text-sm font-medium">
-                    {step.timeline}
+                    {t(step.timelineKey)}
                   </div>
                 </div>
               </motion.div>
@@ -278,10 +282,10 @@ export default function Merchants() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Works With Your Platform
+              {t('merchants.platforms.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Native integrations and universal compatibility
+              {t('merchants.platforms.subtitle')}
             </p>
           </motion.div>
 
@@ -300,7 +304,7 @@ export default function Merchants() {
                     {platform.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {platform.users} merchants
+                    {platform.users} {t('merchants.platforms.merchants')}
                   </p>
                 </Card>
               </motion.div>
@@ -319,10 +323,10 @@ export default function Merchants() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Frequently Asked Questions
+              {t('merchants.faq.title')}
             </h2>
             <p className="text-muted-foreground">
-              Everything merchants need to know about AmplifAI
+              {t('merchants.faq.subtitle')}
             </p>
           </motion.div>
 
@@ -339,10 +343,10 @@ export default function Merchants() {
                   className="bg-surface-50 border border-border rounded-2xl px-6"
                 >
                   <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-6">
-                    {item.question}
+                    {t(item.questionKey)}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
-                    {item.answer}
+                    {t(item.answerKey)}
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -362,11 +366,10 @@ export default function Merchants() {
             <Card className="relative overflow-hidden gradient-primary text-white p-12 text-center">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold mb-4">
-                  Ready to boost your revenue?
+                  {t('merchants.cta.title')}
                 </h2>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                  Join hundreds of merchants already generating additional revenue with AmplifAI. 
-                  No setup costs, no risk, pure upside.
+                  {t('merchants.cta.subtitle')}
                 </p>
                 <Link to="/contact">
                   <Button 
@@ -374,7 +377,7 @@ export default function Merchants() {
                     variant="secondary"
                     className="bg-white text-primary font-semibold px-8 py-4 text-lg hover:bg-white/90 hover-lift"
                   >
-                    Talk to Us
+                    {t('merchants.cta.button')}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

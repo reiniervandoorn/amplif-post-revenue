@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MetricStat } from "@/components/MetricStat";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const valueProps = [
   {
@@ -112,6 +113,8 @@ const successStory = {
 };
 
 export default function Partners() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -123,12 +126,10 @@ export default function Partners() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-              For <span className="gradient-text">Partners</span>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl" dangerouslySetInnerHTML={{ __html: t('partners.hero.title') }}>
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-              Access premium customers at the perfect moment. Zero acquisition costs, 
-              fair distribution, and weekly payouts for quality service providers.
+              {t('partners.hero.subtitle')}
             </p>
             <div className="mt-10">
               <Link to="/contact">
@@ -136,7 +137,7 @@ export default function Partners() {
                   size="lg"
                   className="gradient-primary text-white font-semibold px-8 py-4 text-lg hover:shadow-xl hover-lift"
                 >
-                  Apply to Partner
+                  {t('partners.hero.joinNetwork')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
