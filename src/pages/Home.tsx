@@ -132,7 +132,7 @@ export default function Home() {
           delay: 0.7
         }} className="mt-24">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {features.map((feature, index) => <motion.div key={feature.title} initial={{
+              {features.map((feature, index) => <motion.div key={feature.key} initial={{
               opacity: 0,
               y: 20
             }} animate={{

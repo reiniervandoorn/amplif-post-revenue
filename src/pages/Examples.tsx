@@ -694,15 +694,15 @@ const examplePairings = [
   }
 ];
 
-const categories = [
-  { name: t('category.accessories'), count: 14, color: "bg-blue-100 text-blue-700" },
-  { name: t('category.services'), count: 18, color: "bg-green-100 text-green-700" },
-  { name: t('category.warranties'), count: 8, color: "bg-purple-100 text-purple-700" },
-  { name: t('category.subscriptions'), count: 12, color: "bg-orange-100 text-orange-700" }
-];
 
 export default function Examples() {
   const { t } = useLanguage();
+  const categories = [
+    { name: t('category.accessories'), count: 14, color: "bg-blue-100 text-blue-700" },
+    { name: t('category.services'), count: 18, color: "bg-green-100 text-green-700" },
+    { name: t('category.warranties'), count: 8, color: "bg-purple-100 text-purple-700" },
+    { name: t('category.subscriptions'), count: 12, color: "bg-orange-100 text-orange-700" }
+  ];
   const handleTryDemo = (itemId: string) => {
     // Navigate to home with the selected item
     window.location.href = `/#demo?item=${itemId}`;

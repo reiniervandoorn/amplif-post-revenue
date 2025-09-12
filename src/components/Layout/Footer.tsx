@@ -64,7 +64,7 @@ export const Footer = () => {
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerLinks.support.map((item) => (
-                    <li key={item.name}>
+                      <li key={item.key}>
                       <Link
                         to={item.href}
                         className="text-sm leading-6 text-muted-foreground hover:text-foreground transition-colors"
@@ -83,7 +83,7 @@ export const Footer = () => {
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerLinks.legal.map((item) => (
-                    <li key={item.name}>
+                    <li key={item.key}>
                       <Link
                         to={item.href}
                         className="text-sm leading-6 text-muted-foreground hover:text-foreground transition-colors"
