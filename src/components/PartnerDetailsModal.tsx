@@ -27,6 +27,7 @@ interface PartnerDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
   offer: Offer | null;
+  onBookingComplete?: () => void;
 }
 
 const timeSlots = [
@@ -34,11 +35,12 @@ const timeSlots = [
   "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
 ];
 
-export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsModalProps) => {
+export const PartnerDetailsModal = ({ isOpen, onClose, offer, onBookingComplete }: PartnerDetailsModalProps) => {
   const { t } = useLanguage();
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isBooked, setIsBooked] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   if (!offer) return null;
 
@@ -52,11 +54,17 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer }: PartnerDetailsMo
 
   const handleBooking = () => {
     setIsBooked(true);
+    setShowSuccess(true);
     setTimeout(() => {
+      setShowSuccess(false);
       setIsBooked(false);
       setSelectedDate(undefined);
       setSelectedTime("");
-      onClose();
+      if (onBookingComplete) {
+        onBookingComplete();
+      } else {
+        onClose();
+      }
     }, 2000);
   };
 

@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 interface FormData {
   name: string;
@@ -43,10 +44,23 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Mock API call - replace with actual form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log("Form submitted:", formData);
+      // Save to Supabase
+      const { error } = await supabase
+        .from('signups')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          website: formData.website || null,
+          user_type: formData.userType,
+          platform: formData.platform || null,
+          category: formData.category || null,
+        });
+
+      if (error) {
+        console.error('Error saving signup:', error);
+        throw error;
+      }
       
       setIsSubmitted(true);
       toast({
@@ -54,6 +68,7 @@ export default function Contact() {
         description: t('contact.success'),
       });
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: t('common.error'),
         description: t('contact.errorMsg'),

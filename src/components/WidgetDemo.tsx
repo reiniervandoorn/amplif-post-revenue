@@ -157,6 +157,18 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
     });
   };
 
+  const handleServiceBookingComplete = () => {
+    setServiceOffer(null);
+    // Show payment modal for the service after booking
+    if (serviceOffer) {
+      setPaymentProduct({
+        name: serviceOffer.name,
+        price: serviceOffer.price,
+        image: serviceOffer.image
+      });
+    }
+  };
+
   return (
     <div className="relative max-w-4xl mx-auto">
       {/* Device Frame */}
@@ -326,6 +338,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
         isOpen={!!serviceOffer}
         onClose={() => setServiceOffer(null)}
         offer={serviceOffer}
+        onBookingComplete={handleServiceBookingComplete}
       />
     </div>
   );
