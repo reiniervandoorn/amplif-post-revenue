@@ -118,7 +118,7 @@ export const ExamplePairingCard = ({ pairing, onTryDemo }: ExamplePairingCardPro
                         <span className={`text-xs px-2 py-0.5 rounded-full ${categoryColors[offer.category]}`}>
                           {t(`category.${offer.category}`)}
                         </span>
-                        {offer.partner.name !== "Your Store" && (
+                        {offer.partner.name !== t('common.yourStore') && (
                           <span className="text-xs text-muted-foreground">
                             {t('common.by')} {offer.partner.name}
                           </span>
