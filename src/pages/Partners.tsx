@@ -6,114 +6,148 @@ import { Card } from "@/components/ui/card";
 import { MetricStat } from "@/components/MetricStat";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const valueProps = [
-  {
-    icon: Target,
-    title: "Zero-CAC, High-Intent Moment",
-    description: "Reach customers at the perfect moment - right after they've made a purchase and are in a buying mindset. No acquisition costs."
-  },
-  {
-    icon: TrendingUp,
-    title: "Fair Distribution Algorithm",
-    description: "Our AI considers customer satisfaction scores and performance metrics to ensure quality partners get more visibility."
-  },
-  {
-    icon: DollarSign,
-    title: "Weekly Payouts",
-    description: "Get paid weekly for all completed services. No waiting months for your earnings. Transparent reporting and fast payments."
-  },
-  {
-    icon: Users,
-    title: "Qualified Customer Base",
-    description: "Access customers from premium merchants who value quality and are willing to invest in complementary services."
-  },
-  {
-    icon: Shield,
-    title: "Brand Protection",
-    description: "We maintain high standards and provide clear 'offered by Partner' labeling. Your reputation is protected by our vetting process."
-  },
-  {
-    icon: Clock,
-    title: "Flexible Scheduling",
-    description: "You control your capacity and availability. Our system matches customers to your schedule automatically."
-  },
-];
 
-const partnerCategories = [
-  {
-    title: "Installation Services",
-    icon: "🔧",
-    description: "Professional setup and installation for electronics, appliances, and equipment",
-    examples: ["TV mounting", "Appliance installation", "Smart home setup", "Furniture assembly"],
-    demand: "High",
-    earning: "€80-€200 per job"
-  },
-  {
-    title: "Extended Warranties", 
-    icon: "🛡️",
-    description: "Protection plans and extended warranty coverage for purchased items",
-    examples: ["Electronics protection", "Appliance warranties", "Equipment coverage", "Damage protection"],
-    demand: "Very High",
-    earning: "€25-€150 per policy"
-  },
-  {
-    title: "Subscription Services",
-    icon: "📱",
-    description: "Recurring services and subscriptions that complement purchased products",
-    examples: ["Software subscriptions", "Content streaming", "Maintenance plans", "Supply delivery"],
-    demand: "High",
-    earning: "€10-€50 monthly"
-  },
-  {
-    title: "Training & Courses",
-    icon: "🎓", 
-    description: "Educational content and training programs related to purchased items",
-    examples: ["Photography workshops", "Barista training", "Fitness coaching", "Tech tutorials"],
-    demand: "Medium",
-    earning: "€50-€300 per course"
-  },
-  {
-    title: "Accessories & Add-ons",
-    icon: "📦",
-    description: "Complementary physical products that enhance the main purchase",
-    examples: ["Camera accessories", "Kitchen tools", "Bike equipment", "Gaming peripherals"],
-    demand: "Very High", 
-    earning: "€15-€100 per item"
-  },
-  {
-    title: "Maintenance & Support",
-    icon: "⚙️",
-    description: "Ongoing maintenance, support, and repair services",
-    examples: ["Device maintenance", "Cleaning services", "Tune-ups", "Technical support"],
-    demand: "Medium",
-    earning: "€40-€120 per service"
-  },
-];
 
-const requirements = [
-  "Valid business license and insurance",
-  "Minimum 4.5-star customer rating",
-  "Proven track record in your category",
-  "Professional service delivery",
-  "Clear pricing and service descriptions",
-  "Commitment to AmplifAI quality standards"
-];
 
-const successStory = {
-  name: "InstallPro Services",
-  category: "Installation",
-  results: [
-    { metric: "240%", label: "Revenue Growth" },
-    { metric: "890", label: "Jobs Completed" },
-    { metric: "4.9★", label: "Avg Rating" },
-    { metric: "€89k", label: "Annual Earnings" }
-  ],
-  quote: "AmplifAI transformed our business. We went from hunting for customers to having a steady stream of high-quality jobs. The customers are already sold on the value - we just deliver great service.",
-  author: "Marcus Chen, Founder"
-};
 
 export default function Partners() {
   const { t } = useLanguage();
+
+  const valueProps = [
+    {
+      icon: Target,
+      title: t('partners.valueProp.zeroCac.title'),
+      description: t('partners.valueProp.zeroCac.desc')
+    },
+    {
+      icon: TrendingUp,
+      title: t('partners.valueProp.fairDistribution.title'),
+      description: t('partners.valueProp.fairDistribution.desc')
+    },
+    {
+      icon: DollarSign,
+      title: t('partners.valueProp.weeklyPayouts.title'),
+      description: t('partners.valueProp.weeklyPayouts.desc')
+    },
+    {
+      icon: Users,
+      title: t('partners.valueProp.qualifiedCustomers.title'),
+      description: t('partners.valueProp.qualifiedCustomers.desc')
+    },
+    {
+      icon: Shield,
+      title: t('partners.valueProp.brandProtection.title'),
+      description: t('partners.valueProp.brandProtection.desc')
+    },
+    {
+      icon: Clock,
+      title: t('partners.valueProp.flexibleScheduling.title'),
+      description: t('partners.valueProp.flexibleScheduling.desc')
+    },
+  ];
+
+  const partnerCategories = [
+    {
+      title: t('partners.categories.installation.title'),
+      icon: "🔧",
+      description: t('partners.categories.installation.desc'),
+      examples: [
+        t('partners.categories.installation.example1'),
+        t('partners.categories.installation.example2'),
+        t('partners.categories.installation.example3'),
+        t('partners.categories.installation.example4')
+      ],
+      demand: t('partners.categories.installation.demand'),
+      earning: t('partners.categories.installation.earning')
+    },
+    {
+      title: t('partners.categories.warranties.title'), 
+      icon: "🛡️",
+      description: t('partners.categories.warranties.desc'),
+      examples: [
+        t('partners.categories.warranties.example1'),
+        t('partners.categories.warranties.example2'),
+        t('partners.categories.warranties.example3'),
+        t('partners.categories.warranties.example4')
+      ],
+      demand: t('partners.categories.warranties.demand'),
+      earning: t('partners.categories.warranties.earning')
+    },
+    {
+      title: t('partners.categories.subscriptions.title'),
+      icon: "📱",
+      description: t('partners.categories.subscriptions.desc'),
+      examples: [
+        t('partners.categories.subscriptions.example1'),
+        t('partners.categories.subscriptions.example2'),
+        t('partners.categories.subscriptions.example3'),
+        t('partners.categories.subscriptions.example4')
+      ],
+      demand: t('partners.categories.subscriptions.demand'),
+      earning: t('partners.categories.subscriptions.earning')
+    },
+    {
+      title: t('partners.categories.training.title'),
+      icon: "🎓", 
+      description: t('partners.categories.training.desc'),
+      examples: [
+        t('partners.categories.training.example1'),
+        t('partners.categories.training.example2'),
+        t('partners.categories.training.example3'),
+        t('partners.categories.training.example4')
+      ],
+      demand: t('partners.categories.training.demand'),
+      earning: t('partners.categories.training.earning')
+    },
+    {
+      title: t('partners.categories.accessories.title'),
+      icon: "📦",
+      description: t('partners.categories.accessories.desc'),
+      examples: [
+        t('partners.categories.accessories.example1'),
+        t('partners.categories.accessories.example2'),
+        t('partners.categories.accessories.example3'),
+        t('partners.categories.accessories.example4')
+      ],
+      demand: t('partners.categories.accessories.demand'), 
+      earning: t('partners.categories.accessories.earning')
+    },
+    {
+      title: t('partners.categories.maintenance.title'),
+      icon: "⚙️",
+      description: t('partners.categories.maintenance.desc'),
+      examples: [
+        t('partners.categories.maintenance.example1'),
+        t('partners.categories.maintenance.example2'),
+        t('partners.categories.maintenance.example3'),
+        t('partners.categories.maintenance.example4')
+      ],
+      demand: t('partners.categories.maintenance.demand'),
+      earning: t('partners.categories.maintenance.earning')
+    },
+  ];
+
+  const requirements = [
+    t('partners.requirements.1'),
+    t('partners.requirements.2'),
+    t('partners.requirements.3'),
+    t('partners.requirements.4'),
+    t('partners.requirements.5'),
+    t('partners.requirements.6')
+  ];
+
+  const successStory = {
+    name: t('partners.successStory.name'),
+    category: t('partners.successStory.category'),
+    results: [
+      { metric: "240%", label: t('partners.successStory.revenueGrowth') },
+      { metric: "890", label: t('partners.successStory.jobsCompleted') },
+      { metric: "4.9★", label: t('partners.successStory.avgRating') },
+      { metric: "€89k", label: t('partners.successStory.annualEarnings') }
+    ],
+    quote: t('partners.successStory.quote'),
+    author: t('partners.successStory.author')
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -156,10 +190,10 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Why Partners Choose AmplifAI
+              {t('partners.whyChoose.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Join a marketplace that values quality and rewards great service
+              {t('partners.whyChoose.subtitle')}
             </p>
           </motion.div>
 
@@ -198,10 +232,10 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Partner Success Story
+              {t('partners.successStory.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real results from partners on our platform
+              {t('partners.successStory.subtitle')}
             </p>
           </motion.div>
 
@@ -213,7 +247,7 @@ export default function Partners() {
                   {successStory.name}
                 </h3>
                 <div className="inline-flex px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                  {successStory.category} Partner
+                  {successStory.category} {t('partners.successStory.partner')}
                 </div>
                 <blockquote className="text-muted-foreground italic text-lg leading-relaxed mb-6">
                   "{successStory.quote}"
@@ -256,10 +290,10 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Partner Categories
+              {t('partners.categories.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Multiple ways to earn by providing value to customers
+              {t('partners.categories.subtitle')}
             </p>
           </motion.div>
 
@@ -282,7 +316,7 @@ export default function Partners() {
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium text-foreground mb-2">Examples:</h4>
+                      <h4 className="font-medium text-foreground mb-2">{t('partners.categories.examples')}</h4>
                       <div className="flex flex-wrap gap-2">
                         {category.examples.map((example, i) => (
                           <span key={i} className="text-xs px-2 py-1 bg-surface-100 text-muted-foreground rounded-full">
@@ -294,10 +328,10 @@ export default function Partners() {
                     
                     <div className="flex items-center justify-between text-sm">
                       <div>
-                        <span className="text-muted-foreground">Demand: </span>
+                        <span className="text-muted-foreground">{t('partners.categories.demand')} </span>
                         <span className={`font-medium ${
-                          category.demand === 'Very High' ? 'text-success' : 
-                          category.demand === 'High' ? 'text-primary' : 'text-warning'
+                          category.demand === t('partners.categories.warranties.demand') || category.demand === t('partners.categories.accessories.demand') ? 'text-success' : 
+                          category.demand === t('partners.categories.installation.demand') || category.demand === t('partners.categories.subscriptions.demand') ? 'text-primary' : 'text-warning'
                         }`}>
                           {category.demand}
                         </span>
@@ -324,10 +358,10 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Platform Metrics
+              {t('partners.metrics.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Join a growing network of successful partners
+              {t('partners.metrics.subtitle')}
             </p>
           </motion.div>
 
@@ -335,25 +369,25 @@ export default function Partners() {
             <MetricStat
               value={850}
               suffix="+"
-              label="Active Partners"
-              description="Across all categories"
+              label={t('partners.metrics.activePartners')}
+              description={t('partners.metrics.acrossCategories')}
             />
             <MetricStat
               value={92}
               suffix="%"
-              label="Partner Satisfaction"
-              description="Would recommend us"
+              label={t('partners.metrics.partnerSatisfaction')}
+              description={t('partners.metrics.wouldRecommend')}
             />
             <MetricStat
               value={4.7}
-              label="Avg Partner Rating"
-              description="Customer satisfaction"
+              label={t('partners.metrics.avgRating')}
+              description={t('partners.metrics.customerSatisfaction')}
             />
             <MetricStat
               value={18}
               suffix="k"
-              label="Jobs Completed"
-              description="This month"
+              label={t('partners.metrics.jobsCompleted')}
+              description={t('partners.metrics.thisMonth')}
             />
           </div>
         </div>
@@ -369,10 +403,10 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Partner Requirements
+              {t('partners.requirements.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We maintain high standards to ensure the best experience for merchants and customers
+              {t('partners.requirements.subtitle')}
             </p>
           </motion.div>
 
@@ -410,11 +444,10 @@ export default function Partners() {
             <Card className="relative overflow-hidden gradient-primary text-white p-12 text-center">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold mb-4">
-                  Ready to grow your business?
+                  {t('partners.cta.title')}
                 </h2>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                  Join AmplifAI's partner network and start accessing premium customers 
-                  who are ready to purchase your services. No upfront costs, just results.
+                  {t('partners.cta.subtitle')}
                 </p>
                 <Link to="/contact">
                   <Button 
@@ -422,7 +455,7 @@ export default function Partners() {
                     variant="secondary"
                     className="bg-white text-primary font-semibold px-8 py-4 text-lg hover:bg-white/90 hover-lift"
                   >
-                    Apply Now
+                    {t('partners.cta.button')}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
