@@ -180,8 +180,8 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-          <div className="flex-1 bg-surface-200 rounded-full px-4 py-1.5 text-sm text-muted-foreground ml-4">
-            yourstore.com/thank-you
+<div className="flex-1 bg-surface-200 rounded-full px-4 py-1.5 text-sm text-muted-foreground ml-4">
+            {t('widget.sampleUrl')}
           </div>
         </div>
 
@@ -190,16 +190,16 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
           <div className="inline-flex items-center justify-center w-16 h-16 bg-success/10 rounded-full mb-4">
             <Check className="w-8 h-8 text-success" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
-          <p className="text-muted-foreground">{t('widget.thankYou')} {currentPurchase.name}</p>
+<h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
+          <p className="text-muted-foreground">{t('widget.thankYou')} {t(`products.${currentPurchase.id}`)}</p>
           
           {/* Purchase Item Selector for Demo */}
           <div className="mt-6 p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">{currentPurchase.image}</span>
-                <div className="text-left">
-                  <p className="font-semibold text-sm">{currentPurchase.name}</p>
+<div className="text-left">
+                  <p className="font-semibold text-sm">{t(`products.${currentPurchase.id}`)}</p>
                   <p className="text-muted-foreground text-xs">{currentPurchase.price}</p>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                 >
                   {purchasedItems.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {item.name}
+                      {t(`products.${item.id}`)}
                     </option>
                   ))}
                 </select>
@@ -296,10 +296,10 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
                       <div className="text-center mb-3">
                         <div className="text-3xl mb-2">{product.image}</div>
                         <h4 className="font-semibold text-sm text-foreground mb-1">{product.name}</h4>
-                        <p className="text-xs text-muted-foreground mb-2">{product.benefit}</p>
-                         {product.provider && (
-                          <p className="text-xs text-brand-violet">{t('common.by')} {product.provider}</p>
-                        )}
+{/* Removed benefit to avoid untranslated text */}
+{product.provider && (
+  <p className="text-xs text-brand-violet">{t('common.by')} {product.provider}</p>
+)}
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">

@@ -30,42 +30,42 @@ const steps = [
 
 const faqItems = [
   {
-    question: "How does checkout integration work?",
-    answer: "AmplifAI integrates seamlessly with your existing checkout flow. We support all major e-commerce platforms including Shopify, WooCommerce, Magento, and BigCommerce through lightweight snippets or native apps."
+    questionKey: "howItWorks.faq.items.0.q",
+    answerKey: "howItWorks.faq.items.0.a"
   },
   {
-    question: "What happens with refunds?",
-    answer: "Refunds are handled automatically through our coupling system. If the original item is refunded, any add-on purchases are also refunded proportionally. We maintain complete transaction integrity."
+    questionKey: "howItWorks.faq.items.1.q",
+    answerKey: "howItWorks.faq.items.1.a"
   },
   {
-    question: "How are partners vetted?",
-    answer: "All partners go through our KYC verification process. We check business licenses, insurance, customer reviews, and financial standing. You have full control over which partners can offer services to your customers."
+    questionKey: "howItWorks.faq.items.2.q",
+    answerKey: "howItWorks.faq.items.2.a"
   },
   {
-    question: "Can I control what's offered?",
-    answer: "Absolutely. You have granular control through allow/deny lists, category restrictions, and brand guidelines. Partners must follow your brand standards, and all offers show clear 'offered by Partner Name' labeling."
+    questionKey: "howItWorks.faq.items.3.q",
+    answerKey: "howItWorks.faq.items.3.a"
   },
   {
-    question: "What analytics do I get?",
-    answer: "Comprehensive dashboard showing attach rates, revenue per offer, partner performance, and customer satisfaction scores. Real-time data helps you optimize your offering strategy."
+    questionKey: "howItWorks.faq.items.4.q",
+    answerKey: "howItWorks.faq.items.4.a"
   },
 ];
 
 const features = [
   {
     icon: Settings,
-    title: "Full Brand Control",
-    description: "Allow/deny lists, category controls, and brand safety measures ensure only appropriate offers reach your customers."
+    titleKey: "howItWorks.features.fullBrand.title",
+    descriptionKey: "howItWorks.features.fullBrand.desc"
   },
   {
     icon: Shield,
-    title: "Risk-Free Integration",
-    description: "No upfront costs, no minimum commitments. Only pay when you generate additional revenue."
+    titleKey: "howItWorks.features.riskFree.title",
+    descriptionKey: "howItWorks.features.riskFree.desc"
   },
   {
     icon: BarChart3,
-    title: "Real-Time Analytics",
-    description: "Track performance, optimize offerings, and measure ROI with comprehensive reporting dashboard."
+    titleKey: "howItWorks.features.realTime.title",
+    descriptionKey: "howItWorks.features.realTime.desc"
   },
 ];
 
@@ -204,10 +204,10 @@ export default function HowItWorks() {
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">
-                    {feature.title}
+{t((feature as any).titleKey)}
                   </h3>
                   <p className="text-muted-foreground">
-                    {feature.description}
+{t((feature as any).descriptionKey)}
                   </p>
                 </Card>
               </motion.div>
@@ -246,10 +246,10 @@ export default function HowItWorks() {
                   className="bg-background border border-border rounded-2xl px-6"
                 >
                   <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-6">
-                    {item.question}
+{t(item.questionKey)}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
-                    {item.answer}
+{t(item.answerKey)}
                   </AccordionContent>
                 </AccordionItem>
               ))}

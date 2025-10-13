@@ -224,10 +224,15 @@ export const PartnerDetailsModal = ({ isOpen, onClose, offer, onBookingComplete 
                 {isService ? t('partner.appointmentBooked') : t('partner.addedToCart')}
               </h3>
               <p className="text-muted-foreground">
-                {isService 
-                  ? `Your ${offer.name.toLowerCase()} is scheduled for ${selectedDate?.toDateString()} at ${selectedTime}`
-                  : `${offer.name} has been added to your cart`
-                }
+{isService ? (
+                  <>
+                    {t('partner.your')} {offer.name.toLowerCase()} {t('partner.scheduledOn')} {selectedDate?.toDateString()} {t('partner.at')} {selectedTime}
+                  </>
+                ) : (
+                  <>
+                    {offer.name} {t('partner.addedPrefix')}
+                  </>
+                )}
               </p>
             </motion.div>
           )}

@@ -101,9 +101,9 @@ export const Footer = () => {
         {/* Bottom section */}
         <div className="mt-16 border-t border-border pt-8 sm:mt-20 lg:mt-24">
           <div className="flex flex-col items-center justify-between sm:flex-row">
-            <p className="text-xs leading-5 text-muted-foreground">
-              &copy; 2024 AmplifAI. All rights reserved.
-            </p>
+<p className="text-xs leading-5 text-muted-foreground">
+                {t('footer.copyright')}
+              </p>
             <div className="mt-4 sm:mt-0">
               <p className="text-xs leading-5 text-muted-foreground">
                 {t('footer.madeWithLove')}

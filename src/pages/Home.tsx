@@ -86,8 +86,9 @@ export default function Home() {
                 {t('home.seeInAction')}
               </h2>
               <p className="text-muted-foreground">
-                {t('home.demo.subtitle')}
+{t('home.demo.subtitle')}
               </p>
+              <p className="text-xs text-muted-foreground">{t('home.demo.hint')}</p>
             </div>
             
             <WidgetDemo />
@@ -173,7 +174,7 @@ export default function Home() {
                 {t('home.socialProof.title')}
               </p>
               <div className="flex items-center justify-center space-x-12 opacity-60">
-                {socialProofLogos.map((company, index) => <motion.div key={company.name} initial={{
+{socialProofLogos.map((company, index) => <motion.div key={company.name} initial={{
                 opacity: 0
               }} animate={{
                 opacity: 1
@@ -181,8 +182,8 @@ export default function Home() {
                 duration: 0.5,
                 delay: 1 + index * 0.1
               }} className="flex items-center space-x-2">
-                    <span className="text-2xl">{company.logo}</span>
-                    <span className="font-semibold text-muted-foreground">{company.name}</span>
+                    <span className="text-2xl" aria-hidden> {company.logo}</span>
+                    <span className="sr-only">{company.name}</span>
                   </motion.div>)}
               </div>
             </div>
