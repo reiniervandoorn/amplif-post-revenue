@@ -152,28 +152,33 @@ export default function HowItWorks() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <MetricStat
               value={25}
-              suffix="%"
-              label="Attach Rate"
-              description="Average customer adoption"
+              suffix="%*"
+              label={t('howItWorks.metrics.stats.attachRate.label')}
+              description={t('howItWorks.metrics.stats.attachRate.desc')}
             />
             <MetricStat
               value={320}
               prefix="€"
-              label="Extra Revenue"
-              description="Per 1,000 orders processed"
+              suffix="*"
+              label={t('howItWorks.metrics.stats.extraRevenue.label')}
+              description={t('howItWorks.metrics.stats.extraRevenue.desc')}
             />
             <MetricStat
               value={7}
-              label="Days to ROI"
-              description="Typical break-even timeline"
+              suffix="*"
+              label={t('howItWorks.metrics.stats.daysToROI.label')}
+              description={t('howItWorks.metrics.stats.daysToROI.desc')}
             />
             <MetricStat
               value={94}
-              suffix="%"
-              label="Customer Satisfaction"
-              description="Happy with recommendations"
+              suffix="%*"
+              label={t('howItWorks.metrics.stats.satisfaction.label')}
+              description={t('howItWorks.metrics.stats.satisfaction.desc')}
             />
           </div>
+          <p className="text-xs text-muted-foreground text-center mt-6">
+            * {t('howItWorks.metrics.disclaimer')}
+          </p>
         </div>
       </section>
 
@@ -194,7 +199,7 @@ export default function HowItWorks() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <motion.div
-                key={feature.title}
+                key={feature.titleKey}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}

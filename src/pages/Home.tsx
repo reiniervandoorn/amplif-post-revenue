@@ -115,10 +115,13 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <MetricStat value={28} suffix="%" label={t('home.metrics.aov.label')} description={t('home.metrics.aov.desc')} />
-              <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order" description={t('home.metrics.extraRevenue.desc')} />
-              <MetricStat value={18} suffix="%" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
+              <MetricStat value={28} suffix="%*" label={t('home.metrics.aov.label')} description={t('home.metrics.aov.desc')} />
+              <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order*" description={t('home.metrics.extraRevenue.desc')} />
+              <MetricStat value={18} suffix="%*" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
             </div>
+            <p className="text-xs text-muted-foreground text-center mt-6">
+              * {t('home.metrics.disclaimer')}
+            </p>
           </motion.div>
 
           {/* Features Grid */}

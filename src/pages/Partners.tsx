@@ -222,64 +222,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Success Story */}
-      <section className="py-16 bg-surface-50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              {t('partners.successStory.title')}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t('partners.successStory.subtitle')}
-            </p>
-          </motion.div>
-
-          <div className="bg-background rounded-3xl p-8 lg:p-12 border border-border shadow-lg">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="text-6xl mb-6">🔧</div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {successStory.name}
-                </h3>
-                <div className="inline-flex px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                  {successStory.category} {t('partners.successStory.partner')}
-                </div>
-                <blockquote className="text-muted-foreground italic text-lg leading-relaxed mb-6">
-                  "{successStory.quote}"
-                </blockquote>
-                <cite className="text-sm font-medium text-foreground">
-                  - {successStory.author}
-                </cite>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-6">
-                {successStory.results.map((result, index) => (
-                  <motion.div
-                    key={result.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    className="text-center"
-                  >
-                    <div className="text-3xl font-bold gradient-text mb-2">
-                      {result.metric}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {result.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Partner Categories */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
