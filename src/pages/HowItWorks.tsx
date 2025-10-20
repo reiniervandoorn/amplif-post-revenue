@@ -176,8 +176,8 @@ export default function HowItWorks() {
               description={t('howItWorks.metrics.stats.satisfaction.desc')}
             />
           </div>
-          <p className="text-xs text-muted-foreground text-center mt-6">
-            * {t('howItWorks.metrics.disclaimer')}
+          <p className="text-muted-foreground text-center mt-6">
+            <span className="text-[0.65rem]">*</span> <span className="text-xs">{t('howItWorks.metrics.disclaimer')}</span>
           </p>
         </div>
       </section>

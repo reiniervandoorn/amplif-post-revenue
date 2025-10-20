@@ -119,8 +119,8 @@ export default function Home() {
               <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order*" description={t('home.metrics.extraRevenue.desc')} />
               <MetricStat value={18} suffix="%*" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
             </div>
-            <p className="text-xs text-muted-foreground text-center mt-6">
-              * {t('home.metrics.disclaimer')}
+            <p className="text-muted-foreground text-center mt-6">
+              <span className="text-[0.65rem]">*</span> <span className="text-xs">{t('home.metrics.disclaimer')}</span>
             </p>
           </motion.div>
 
