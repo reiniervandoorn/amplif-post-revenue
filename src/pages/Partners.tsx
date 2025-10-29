@@ -203,7 +203,7 @@ export default function Partners() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {valueProps.map((prop, index) => (
+            {valueProps.slice(0, -1).map((prop, index) => (
               <motion.div
                 key={prop.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -224,6 +224,56 @@ export default function Partners() {
               </motion.div>
             ))}
           </div>
+
+          {/* Dashboard Section - Full Width */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-8"
+          >
+            <Card className="p-8 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
+              <div className="flex items-start gap-6">
+                <div className="inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-2xl flex-shrink-0">
+                  <LayoutDashboard className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-foreground mb-4">
+                    {valueProps[valueProps.length - 1].title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    {valueProps[valueProps.length - 1].description}
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature1')}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature2')}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature3')}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature4')}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature5')}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      <span className="text-muted-foreground">{t('partners.dashboard.feature6')}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
@@ -305,7 +355,7 @@ export default function Partners() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              {t('partners.metrics.title')}
+              {t('partners.metrics.title')}<span className="text-[0.65rem] align-super">*</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {t('partners.metrics.subtitle')}
@@ -337,6 +387,9 @@ export default function Partners() {
               description={t('partners.metrics.thisMonth')}
             />
           </div>
+          <p className="text-xs text-muted-foreground text-center mt-8">
+            * {t('partners.metrics.disclaimer')}
+          </p>
         </div>
       </section>
 
