@@ -142,7 +142,7 @@ export default function HowItWorks() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              {t('howItWorks.metrics.title')}
+              {t('howItWorks.metrics.title')}<span className="text-[0.65rem] align-super">*</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {t('howItWorks.metrics.subtitle')}
@@ -152,26 +152,24 @@ export default function HowItWorks() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <MetricStat
               value={25}
-              suffix="%*"
+              suffix="%"
               label={t('howItWorks.metrics.stats.attachRate.label')}
               description={t('howItWorks.metrics.stats.attachRate.desc')}
             />
             <MetricStat
               value={320}
               prefix="€"
-              suffix="*"
               label={t('howItWorks.metrics.stats.extraRevenue.label')}
               description={t('howItWorks.metrics.stats.extraRevenue.desc')}
             />
             <MetricStat
               value={7}
-              suffix="*"
               label={t('howItWorks.metrics.stats.daysToROI.label')}
               description={t('howItWorks.metrics.stats.daysToROI.desc')}
             />
             <MetricStat
               value={94}
-              suffix="%*"
+              suffix="%"
               label={t('howItWorks.metrics.stats.satisfaction.label')}
               description={t('howItWorks.metrics.stats.satisfaction.desc')}
             />

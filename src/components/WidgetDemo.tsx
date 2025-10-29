@@ -15,6 +15,7 @@ interface Product {
   benefit: string;
   category: "webshop" | "partner";
   provider?: string;
+  partner?: PartnerEntity;
 }
 
 interface PurchasedItem {
@@ -41,9 +42,54 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
       { id: "soundbar", name: "Wireless Soundbar", price: "$199", image: "🔊", benefit: "Cinema-quality audio", category: "webshop" },
     ],
     partner: [
-      { id: "install", name: "Professional Installation", price: "$149", image: "👨‍🔧", benefit: "Same-day setup", category: "partner", provider: "TechInstall Pro" },
-      { id: "warranty", name: "Extended Warranty 3yr", price: "$199", image: "🛡️", benefit: "Total peace of mind", category: "partner", provider: "SecureGuard" },
-      { id: "calibration", name: "Professional Calibration", price: "$99", image: "🎨", benefit: "Perfect picture quality", category: "partner", provider: "PixelPerfect" },
+      { 
+        id: "install", 
+        name: "Professional Installation", 
+        price: "$149", 
+        image: "👨‍🔧", 
+        benefit: "Same-day setup", 
+        category: "partner", 
+        provider: "TechInstall Pro",
+        partner: {
+          name: "TechInstall Pro",
+          rating: 4.9,
+          reviews: 324,
+          description: "Professional TV mounting and setup service with 2-year warranty",
+          availability: "Available today"
+        }
+      },
+      { 
+        id: "warranty", 
+        name: "Extended Warranty 3yr", 
+        price: "$199", 
+        image: "🛡️", 
+        benefit: "Total peace of mind", 
+        category: "partner", 
+        provider: "SecureGuard",
+        partner: {
+          name: "SecureGuard",
+          rating: 4.8,
+          reviews: 892,
+          description: "3-year comprehensive coverage including accidental damage",
+          availability: "Instant activation"
+        }
+      },
+      { 
+        id: "calibration", 
+        name: "Professional Calibration", 
+        price: "$99", 
+        image: "🎨", 
+        benefit: "Perfect picture quality", 
+        category: "partner", 
+        provider: "PixelPerfect",
+        partner: {
+          name: "PixelPerfect",
+          rating: 5.0,
+          reviews: 156,
+          description: "Expert color calibration for cinema-quality viewing",
+          availability: "Available this week"
+        }
+      },
     ],
   },
   espresso: {
@@ -53,9 +99,54 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
       { id: "cups", name: "Espresso Cup Set", price: "$39", image: "☕", benefit: "Professional presentation", category: "webshop" },
     ],
     partner: [
-      { id: "course", name: "Barista Masterclass", price: "$79", image: "🎓", benefit: "Learn like a pro", category: "partner", provider: "Coffee Academy" },
-      { id: "beans", name: "Premium Bean Subscription", price: "$29/mo", image: "🌱", benefit: "Fresh roasted monthly", category: "partner", provider: "Origin Roasters" },
-      { id: "maintenance", name: "Annual Maintenance", price: "$119", image: "🔧", benefit: "Keep it perfect", category: "partner", provider: "CoffeeTech Services" },
+      { 
+        id: "course", 
+        name: "Barista Masterclass", 
+        price: "$79", 
+        image: "🎓", 
+        benefit: "Learn like a pro", 
+        category: "partner", 
+        provider: "Coffee Academy",
+        partner: {
+          name: "Coffee Academy",
+          rating: 4.9,
+          reviews: 267,
+          description: "Learn professional espresso techniques in 2-hour hands-on session",
+          availability: "Weekly classes"
+        }
+      },
+      { 
+        id: "beans", 
+        name: "Premium Bean Subscription", 
+        price: "$29/mo", 
+        image: "🌱", 
+        benefit: "Fresh roasted monthly", 
+        category: "partner", 
+        provider: "Origin Roasters",
+        partner: {
+          name: "Origin Roasters",
+          rating: 4.8,
+          reviews: 543,
+          description: "Premium single-origin beans delivered monthly",
+          availability: "Next delivery in 2 days"
+        }
+      },
+      { 
+        id: "maintenance", 
+        name: "Annual Maintenance", 
+        price: "$119", 
+        image: "🔧", 
+        benefit: "Keep it perfect", 
+        category: "partner", 
+        provider: "CoffeeTech Services",
+        partner: {
+          name: "CoffeeTech Services",
+          rating: 4.7,
+          reviews: 189,
+          description: "Professional maintenance to keep your machine running perfectly",
+          availability: "Available this month"
+        }
+      },
     ],
   },
   bike: {
@@ -65,9 +156,54 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
       { id: "pump", name: "Portable CO2 Pump", price: "$34", image: "🔧", benefit: "Never get stranded", category: "webshop" },
     ],
     partner: [
-      { id: "fitting", name: "Professional Bike Fitting", price: "$199", image: "📐", benefit: "Perfect comfort & power", category: "partner", provider: "FitCycle Pro" },
-      { id: "gps", name: "GPS Training App Pro", price: "$9.99/mo", image: "📱", benefit: "Track every ride", category: "partner", provider: "CycleTracker" },
-      { id: "tuneup", name: "Complete Tune-up", price: "$89", image: "🔧", benefit: "Keep it running smooth", category: "partner", provider: "Local Bike Shop" },
+      { 
+        id: "fitting", 
+        name: "Professional Bike Fitting", 
+        price: "$199", 
+        image: "📐", 
+        benefit: "Perfect comfort & power", 
+        category: "partner", 
+        provider: "FitCycle Pro",
+        partner: {
+          name: "FitCycle Pro",
+          rating: 5.0,
+          reviews: 412,
+          description: "Comprehensive fitting session to optimize comfort and performance",
+          availability: "Available next week"
+        }
+      },
+      { 
+        id: "gps", 
+        name: "GPS Training App Pro", 
+        price: "$9.99/mo", 
+        image: "📱", 
+        benefit: "Track every ride", 
+        category: "partner", 
+        provider: "CycleTracker",
+        partner: {
+          name: "CycleTracker",
+          rating: 4.6,
+          reviews: 1823,
+          description: "Advanced training plans and performance analytics",
+          availability: "Instant access"
+        }
+      },
+      { 
+        id: "tuneup", 
+        name: "Complete Tune-up", 
+        price: "$89", 
+        image: "🔧", 
+        benefit: "Keep it running smooth", 
+        category: "partner", 
+        provider: "Local Bike Shop",
+        partner: {
+          name: "Local Bike Shop",
+          rating: 4.8,
+          reviews: 328,
+          description: "Full inspection, adjustment, and maintenance service",
+          availability: "Available tomorrow"
+        }
+      },
     ],
   },
   camera: {
@@ -77,9 +213,54 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
       { id: "bag", name: "Weather-proof Camera Bag", price: "$89", image: "🎒", benefit: "Protect your investment", category: "webshop" },
     ],
     partner: [
-      { id: "workshop", name: "Photography Workshop", price: "$149", image: "🎓", benefit: "Master your craft", category: "partner", provider: "Photo Academy" },
-      { id: "lightroom", name: "Adobe Creative Suite", price: "$20.99/mo", image: "🎨", benefit: "Professional editing", category: "partner", provider: "Adobe" },
-      { id: "insurance", name: "Equipment Insurance", price: "$19/mo", image: "🛡️", benefit: "Full coverage protection", category: "partner", provider: "GearGuard" },
+      { 
+        id: "workshop", 
+        name: "Photography Workshop", 
+        price: "$149", 
+        image: "🎓", 
+        benefit: "Master your craft", 
+        category: "partner", 
+        provider: "Photo Academy",
+        partner: {
+          name: "Photo Academy",
+          rating: 4.9,
+          reviews: 234,
+          description: "4-hour intensive workshop covering composition and lighting",
+          availability: "Weekend sessions"
+        }
+      },
+      { 
+        id: "lightroom", 
+        name: "Adobe Creative Suite", 
+        price: "$20.99/mo", 
+        image: "🎨", 
+        benefit: "Professional editing", 
+        category: "partner", 
+        provider: "Adobe",
+        partner: {
+          name: "Adobe",
+          rating: 4.7,
+          reviews: 15234,
+          description: "Professional photo and video editing software suite",
+          availability: "Instant access"
+        }
+      },
+      { 
+        id: "insurance", 
+        name: "Equipment Insurance", 
+        price: "$19/mo", 
+        image: "🛡️", 
+        benefit: "Full coverage protection", 
+        category: "partner", 
+        provider: "GearGuard",
+        partner: {
+          name: "GearGuard",
+          rating: 4.8,
+          reviews: 987,
+          description: "Comprehensive coverage for all your camera equipment",
+          availability: "Instant activation"
+        }
+      },
     ],
   },
   vacuum: {
@@ -89,9 +270,54 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
       { id: "dock", name: "Premium Charging Dock", price: "$79", image: "🔋", benefit: "Always ready to clean", category: "webshop" },
     ],
     partner: [
-      { id: "setup", name: "Smart Home Setup", price: "$99", image: "🏠", benefit: "Complete automation", category: "partner", provider: "SmartHome Pro" },
-      { id: "cleaning", name: "Monthly Deep Clean", price: "$149", image: "✨", benefit: "Professional results", category: "partner", provider: "CleanCo Services" },
-      { id: "warranty", name: "Extended Warranty 2yr", price: "$79", image: "🛡️", benefit: "Worry-free cleaning", category: "partner", provider: "RoboGuard" },
+      { 
+        id: "setup", 
+        name: "Smart Home Setup", 
+        price: "$99", 
+        image: "🏠", 
+        benefit: "Complete automation", 
+        category: "partner", 
+        provider: "SmartHome Pro",
+        partner: {
+          name: "SmartHome Pro",
+          rating: 4.9,
+          reviews: 456,
+          description: "Full integration with your home automation system",
+          availability: "Available this week"
+        }
+      },
+      { 
+        id: "cleaning", 
+        name: "Monthly Deep Clean", 
+        price: "$149", 
+        image: "✨", 
+        benefit: "Professional results", 
+        category: "partner", 
+        provider: "CleanCo Services",
+        partner: {
+          name: "CleanCo Services",
+          rating: 4.7,
+          reviews: 723,
+          description: "Professional house cleaning service complementing your robot vacuum",
+          availability: "Next available slot tomorrow"
+        }
+      },
+      { 
+        id: "warranty", 
+        name: "Extended Warranty 2yr", 
+        price: "$79", 
+        image: "🛡️", 
+        benefit: "Worry-free cleaning", 
+        category: "partner", 
+        provider: "RoboGuard",
+        partner: {
+          name: "RoboGuard",
+          rating: 4.8,
+          reviews: 634,
+          description: "2-year extended warranty covering all components",
+          availability: "Instant activation"
+        }
+      },
     ],
   },
 };
@@ -141,7 +367,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDem
     image: p.image,
     price: p.price,
     category: "service",
-    partner: partnerDefaults[p.provider || "TechInstall Pro"] || { name: p.provider || "Trusted Partner", rating: 4.7, reviews: 500, description: "Trusted service provider", availability: "Available this week" }
+    partner: p.partner || partnerDefaults[p.provider || "TechInstall Pro"] || { name: p.provider || "Trusted Partner", rating: 4.7, reviews: 500, description: "Trusted service provider", availability: "Available this week" }
   });
 
   const handleAddItem = (product: Product) => {

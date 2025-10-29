@@ -107,7 +107,7 @@ export default function Home() {
         }} className="mt-24">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-foreground mb-4">
-                {t('home.results.title')}
+                {t('home.results.title')}<span className="text-[0.65rem] align-super">*</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 {t('home.results.subtitle')}
@@ -115,9 +115,9 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <MetricStat value={28} suffix="%*" label={t('home.metrics.aov.label')} description={t('home.metrics.aov.desc')} />
-              <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order*" description={t('home.metrics.extraRevenue.desc')} />
-              <MetricStat value={18} suffix="%*" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
+              <MetricStat value={28} suffix="%" label={t('home.metrics.aov.label')} description={t('home.metrics.aov.desc')} />
+              <MetricStat value={3.2} label={t('home.metrics.extraRevenue.label')} prefix="€" suffix="/order" description={t('home.metrics.extraRevenue.desc')} />
+              <MetricStat value={18} suffix="%" label={t('home.metrics.attachRate.label')} description={t('home.metrics.attachRate.desc')} />
             </div>
             <p className="text-muted-foreground text-center mt-6">
               <span className="text-[0.65rem]">*</span> <span className="text-xs">{t('home.metrics.disclaimer')}</span>
