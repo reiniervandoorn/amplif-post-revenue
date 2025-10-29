@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight, TrendingUp, DollarSign, Settings, Clock, Shield, BarChart } from "lucide-react";
+import { CheckCircle, ArrowRight, TrendingUp, DollarSign, Settings, Clock, Shield, BarChart, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -37,6 +37,11 @@ const getValueProps = (t: (key: string) => string) => [
     icon: Settings,
     titleKey: "merchants.valueProps.integration.title",
     descriptionKey: "merchants.valueProps.integration.desc"
+  },
+  {
+    icon: LayoutDashboard,
+    titleKey: "merchants.valueProps.dashboard.title",
+    descriptionKey: "merchants.valueProps.dashboard.desc"
   },
 ];
 

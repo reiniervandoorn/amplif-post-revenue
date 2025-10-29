@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Target, DollarSign, Users, TrendingUp, Clock, Star, Shield } from "lucide-react";
+import { ArrowRight, Target, DollarSign, Users, TrendingUp, Clock, Star, Shield, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -43,6 +43,11 @@ export default function Partners() {
       icon: Clock,
       title: t('partners.valueProp.flexibleScheduling.title'),
       description: t('partners.valueProp.flexibleScheduling.desc')
+    },
+    {
+      icon: LayoutDashboard,
+      title: t('partners.valueProp.dashboard.title'),
+      description: t('partners.valueProp.dashboard.desc')
     },
   ];
 
