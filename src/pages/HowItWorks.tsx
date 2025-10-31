@@ -88,6 +88,11 @@ export default function HowItWorks() {
             <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
               {t('howItWorks.subtitle')}
             </p>
+            <div className="mt-8 p-6 bg-surface-50 rounded-2xl max-w-4xl mx-auto border border-border">
+              <p className="text-base text-muted-foreground">
+                {t('howItWorks.intro')}
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

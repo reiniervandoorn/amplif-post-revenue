@@ -23,6 +23,15 @@ export const Footer = () => {
   const { t } = useLanguage();
   return (
     <footer className="bg-surface-50 border-t border-border">
+      {/* Highlight Banner */}
+      <div className="bg-gradient-to-r from-brand-violet/10 via-brand-fuchsia/10 to-brand-indigo/10 py-6">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <p className="text-center text-sm text-muted-foreground">
+            💡 {t('footer.highlight')}
+          </p>
+        </div>
+      </div>
+      
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand section */}
