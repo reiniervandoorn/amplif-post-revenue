@@ -491,6 +491,121 @@ export default function Partners() {
         </div>
       </section>
 
+      {/* Simulator Section */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              {t('partners.simulator.title')}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {t('partners.simulator.subtitle')}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card className="overflow-hidden">
+              <div className="grid md:grid-cols-2">
+                {/* Left side - Dashboard preview */}
+                <div className="bg-surface-50 p-8 border-r border-border">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between pb-4 border-b border-border">
+                      <h3 className="font-semibold text-foreground">{t('partners.simulator.dashboard')}</h3>
+                      <span className="text-xs px-2 py-1 bg-success/10 text-success rounded-full">{t('partners.simulator.live')}</span>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-1">{t('partners.simulator.weekEarnings')}</div>
+                        <div className="text-2xl font-bold text-foreground">€2,340</div>
+                        <div className="text-xs text-success">+24% {t('partners.simulator.vsLastWeek')}</div>
+                      </div>
+                      
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-1">{t('partners.simulator.newLeads')}</div>
+                        <div className="text-2xl font-bold text-foreground">18</div>
+                        <div className="text-xs text-muted-foreground">8 {t('partners.simulator.booked')}</div>
+                      </div>
+                      
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-2">{t('partners.simulator.upcomingJobs')}</div>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">TV installatie</span>
+                            <span className="text-xs text-muted-foreground">Morgen 14:00</span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">Wasmachine setup</span>
+                            <span className="text-xs text-muted-foreground">Za 10:30</span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">Smart home</span>
+                            <span className="text-xs text-muted-foreground">Zo 15:00</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side - Customer details */}
+                <div className="p-8">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-4">{t('partners.simulator.customerDetails')}</h4>
+                      <div className="space-y-3">
+                        <div className="p-3 bg-surface-50 rounded-lg">
+                          <div className="text-xs text-muted-foreground mb-1">{t('partners.simulator.customerName')}</div>
+                          <div className="text-sm font-medium text-foreground">Emma de Vries</div>
+                        </div>
+                        
+                        <div className="p-3 bg-surface-50 rounded-lg">
+                          <div className="text-xs text-muted-foreground mb-1">{t('partners.simulator.product')}</div>
+                          <div className="text-sm font-medium text-foreground">Samsung 65" 4K Smart TV</div>
+                        </div>
+                        
+                        <div className="p-3 bg-surface-50 rounded-lg">
+                          <div className="text-xs text-muted-foreground mb-1">{t('partners.simulator.service')}</div>
+                          <div className="text-sm font-medium text-foreground">Professionele montage + kalibratie</div>
+                          <div className="text-xs text-success mt-1">€180,00</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-border">
+                      <h4 className="font-semibold text-foreground mb-3">{t('partners.simulator.yourRating')}</h4>
+                      <div className="flex items-center gap-4">
+                        <div className="text-center">
+                          <div className="text-3xl font-bold gradient-text">4.9⭐</div>
+                          <div className="text-xs text-muted-foreground mt-1">{t('partners.simulator.avgScore')}</div>
+                        </div>
+                        <div className="text-center flex-1">
+                          <div className="text-3xl font-bold text-foreground">127</div>
+                          <div className="text-xs text-muted-foreground mt-1">{t('partners.simulator.completedJobs')}</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-3xl font-bold text-foreground">98%</div>
+                          <div className="text-xs text-muted-foreground mt-1">{t('partners.simulator.repeatRate')}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-surface-50">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">

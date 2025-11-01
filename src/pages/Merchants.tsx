@@ -96,12 +96,12 @@ const getFaqItems = (t: (key: string) => string) => [
 ];
 
 const platforms = [
-  { name: "Shopify", logo: "🛒", users: "2M+" },
-  { name: "WooCommerce", logo: "📦", users: "5M+" },
-  { name: "Magento", logo: "🏪", users: "300K+" },
-  { name: "BigCommerce", logo: "🏬", users: "60K+" },
-  { name: "Salesforce", logo: "☁️", users: "150K+" },
-  { name: "Custom", logo: "⚡", users: "Any size" },
+  { name: "Shopify", logo: "🛒" },
+  { name: "WooCommerce", logo: "📦" },
+  { name: "Magento", logo: "🏪" },
+  { name: "BigCommerce", logo: "🏬" },
+  { name: "Salesforce", logo: "☁️" },
+  { name: "Custom", logo: "⚡" },
 ];
 
 export default function Merchants() {
@@ -358,16 +358,142 @@ export default function Merchants() {
               >
                 <Card className="p-6 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
                   <div className="text-3xl mb-3">{platform.logo}</div>
-                  <h3 className="font-semibold text-foreground mb-1">
+                  <h3 className="font-semibold text-foreground">
                     {platform.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {platform.users} {t('merchants.platforms.merchants')}
-                  </p>
                 </Card>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Simulator Section */}
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              {t('merchants.simulator.title')}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {t('merchants.simulator.subtitle')}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Card className="overflow-hidden">
+              <div className="grid md:grid-cols-2">
+                {/* Left side - Dashboard preview */}
+                <div className="bg-surface-50 p-8 border-r border-border">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between pb-4 border-b border-border">
+                      <h3 className="font-semibold text-foreground">{t('merchants.simulator.dashboard')}</h3>
+                      <span className="text-xs px-2 py-1 bg-success/10 text-success rounded-full">{t('merchants.simulator.live')}</span>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-1">{t('merchants.simulator.todayRevenue')}</div>
+                        <div className="text-2xl font-bold text-foreground">€842</div>
+                        <div className="text-xs text-success">+18% {t('merchants.simulator.vsYesterday')}</div>
+                      </div>
+                      
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-1">{t('merchants.simulator.ordersWithOffers')}</div>
+                        <div className="text-2xl font-bold text-foreground">24/67</div>
+                        <div className="text-xs text-muted-foreground">36% {t('merchants.simulator.attachRate')}</div>
+                      </div>
+                      
+                      <div className="bg-background p-4 rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-2">{t('merchants.simulator.topPartners')}</div>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">InstallPro</span>
+                            <span className="text-success font-medium">€320</span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">WarrantyPlus</span>
+                            <span className="text-success font-medium">€289</span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-foreground">TechCare</span>
+                            <span className="text-success font-medium">€233</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right side - Controls */}
+                <div className="p-8">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-4">{t('merchants.simulator.controls')}</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between p-3 bg-surface-50 rounded-lg">
+                          <span className="text-sm text-foreground">{t('merchants.simulator.approvePartners')}</span>
+                          <div className="w-10 h-6 bg-primary rounded-full relative">
+                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between p-3 bg-surface-50 rounded-lg">
+                          <span className="text-sm text-foreground">{t('merchants.simulator.autoMatch')}</span>
+                          <div className="w-10 h-6 bg-primary rounded-full relative">
+                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center justify-between p-3 bg-surface-50 rounded-lg">
+                          <span className="text-sm text-foreground">{t('merchants.simulator.showWarranties')}</span>
+                          <div className="w-10 h-6 bg-primary rounded-full relative">
+                            <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t border-border">
+                      <h4 className="font-semibold text-foreground mb-3">{t('merchants.simulator.recentActivity')}</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-start gap-2">
+                          <div className="w-2 h-2 rounded-full bg-success mt-1.5"></div>
+                          <div>
+                            <div className="text-foreground">{t('merchants.simulator.activity1')}</div>
+                            <div className="text-xs text-muted-foreground">2 min {t('merchants.simulator.ago')}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <div className="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
+                          <div>
+                            <div className="text-foreground">{t('merchants.simulator.activity2')}</div>
+                            <div className="text-xs text-muted-foreground">8 min {t('merchants.simulator.ago')}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <div className="w-2 h-2 rounded-full bg-success mt-1.5"></div>
+                          <div>
+                            <div className="text-foreground">{t('merchants.simulator.activity3')}</div>
+                            <div className="text-xs text-muted-foreground">15 min {t('merchants.simulator.ago')}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
         </div>
       </section>
 

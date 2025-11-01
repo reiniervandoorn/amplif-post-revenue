@@ -327,22 +327,6 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Quote Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-16"
-          >
-            <Card className="p-8 bg-primary/5 border-primary/20 text-center">
-              <p className="text-lg text-foreground italic mb-4">
-                "{t('home.quote.text')}"
-              </p>
-              <p className="text-sm text-muted-foreground font-medium">
-                {t('home.quote.author')}
-              </p>
-            </Card>
-          </motion.div>
 
           {/* Social Proof */}
           <motion.div initial={{

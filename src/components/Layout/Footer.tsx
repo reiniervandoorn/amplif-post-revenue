@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const footerLinks = {
   company: [
-    { key: "footer.about", href: "/about" },
+    { key: "nav.about", href: "/about" },
     { key: "footer.blog", href: "/blog" },
     { key: "footer.careers", href: "/careers" },
   ],
