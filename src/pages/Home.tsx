@@ -280,6 +280,70 @@ export default function Home() {
             </div>
           </motion.div>
 
+          {/* Win-Win Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="mt-24"
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                {t('home.winwin.title')}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                {t('home.winwin.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <Card className="p-8 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">🛒 Webshops</h3>
+                </div>
+                <p className="text-muted-foreground">
+                  {t('home.winwin.webshopBenefit')}
+                </p>
+              </Card>
+
+              <Card className="p-8 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 gradient-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Star className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">🤝 Partners</h3>
+                </div>
+                <p className="text-muted-foreground">
+                  {t('home.winwin.partnerBenefit')}
+                </p>
+              </Card>
+            </div>
+
+            <p className="text-center text-base text-foreground font-medium italic">
+              {t('home.winwin.closing')}
+            </p>
+          </motion.div>
+
+          {/* Quote Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-16"
+          >
+            <Card className="p-8 bg-primary/5 border-primary/20 text-center">
+              <p className="text-lg text-foreground italic mb-4">
+                "{t('home.quote.text')}"
+              </p>
+              <p className="text-sm text-muted-foreground font-medium">
+                {t('home.quote.author')}
+              </p>
+            </Card>
+          </motion.div>
+
           {/* Social Proof */}
           <motion.div initial={{
           opacity: 0,
@@ -336,6 +400,9 @@ export default function Home() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
+                <p className="text-white/80 text-sm mt-8 max-w-2xl mx-auto">
+                  {t('home.cta.ecosystemText')}
+                </p>
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent"></div>
             </Card>

@@ -185,6 +185,64 @@ export default function Partners() {
         </div>
       </section>
 
+      {/* Right Timing Section */}
+      <section className="py-16 bg-surface-50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-6">
+              {t('partners.rightTiming.title')}
+            </h2>
+            
+            <div className="max-w-3xl mx-auto space-y-4 text-lg">
+              <p className="text-foreground font-medium">
+                {t('partners.rightTiming.intro')}
+              </p>
+              <p className="text-muted-foreground">
+                {t('partners.rightTiming.noNoise')}
+              </p>
+              <p className="text-foreground font-semibold">
+                {t('partners.rightTiming.everyOrder')}
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Card className="p-8 bg-background">
+              <h3 className="text-xl font-semibold text-foreground mb-2 text-center">
+                {t('partners.rightTiming.performanceTitle')}<span className="text-[0.65rem] align-super">*</span>
+              </h3>
+              <p className="text-xs text-muted-foreground text-center mb-8">
+                * {t('partners.rightTiming.performanceDisclaimer')}
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="text-4xl font-bold gradient-text mb-2">240+</div>
+                  <p className="text-sm text-muted-foreground">{t('partners.rightTiming.newLeads')}</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold gradient-text mb-2">4.8⭐</div>
+                  <p className="text-sm text-muted-foreground">{t('partners.rightTiming.avgCsat')}</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold gradient-text mb-2">32%</div>
+                  <p className="text-sm text-muted-foreground">{t('partners.rightTiming.conversionRate')}</p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Value Props */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
