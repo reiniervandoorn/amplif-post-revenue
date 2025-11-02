@@ -26,12 +26,12 @@ interface PurchasedItem {
 }
 
 // Mock data for purchased items and their corresponding offers
-const purchasedItems: PurchasedItem[] = [
-  { id: "tv", name: "4K Smart TV", price: "$899", image: "📺" },
-  { id: "espresso", name: "Espresso Machine", price: "$449", image: "☕" },
-  { id: "bike", name: "Road Bike", price: "$1,299", image: "🚴" },
-  { id: "camera", name: "Mirrorless Camera", price: "$1,199", image: "📸" },
-  { id: "vacuum", name: "Robot Vacuum", price: "$399", image: "🤖" },
+const getPurchasedItems = (language: 'en' | 'nl'): PurchasedItem[] => [
+  { id: "tv", name: language === 'nl' ? "4K Smart TV" : "4K Smart TV", price: language === 'nl' ? "€899" : "$899", image: "📺" },
+  { id: "espresso", name: language === 'nl' ? "Espresso Machine" : "Espresso Machine", price: language === 'nl' ? "€449" : "$449", image: "☕" },
+  { id: "bike", name: language === 'nl' ? "Racefiets" : "Road Bike", price: language === 'nl' ? "€1.299" : "$1,299", image: "🚴" },
+  { id: "camera", name: language === 'nl' ? "Systeemcamera" : "Mirrorless Camera", price: language === 'nl' ? "€1.199" : "$1,199", image: "📸" },
+  { id: "vacuum", name: language === 'nl' ? "Robotstofzuiger" : "Robot Vacuum", price: language === 'nl' ? "€399" : "$399", image: "🤖" },
 ];
 
 const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }> = {
@@ -328,7 +328,7 @@ interface WidgetDemoProps {
 }
 
 export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDemoProps) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"webshop" | "partner">(mode);
   const [selectedItem, setSelectedItem] = useState(purchasedItem);
   const [addedItems, setAddedItems] = useState<Set<string>>(new Set());
@@ -339,6 +339,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
     setActiveTab(mode);
   }, [mode]);
 
+  const purchasedItems = getPurchasedItems(language);
   const currentPurchase = purchasedItems.find(item => item.id === selectedItem) || purchasedItems[0];
   const currentOffers = productCatalog[selectedItem] || productCatalog.tv;
 
@@ -416,16 +417,16 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
           <div className="inline-flex items-center justify-center w-16 h-16 bg-success/10 rounded-full mb-4">
             <Check className="w-8 h-8 text-success" />
           </div>
-<h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
-          <p className="text-muted-foreground">{t('widget.thankYou')} {t(`products.${currentPurchase.id}`)}</p>
+          <h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
+          <p className="text-muted-foreground">{t('widget.thankYou')} {currentPurchase.name}</p>
           
           {/* Purchase Item Selector for Demo */}
           <div className="mt-6 p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">{currentPurchase.image}</span>
-<div className="text-left">
-                  <p className="font-semibold text-sm">{t(`products.${currentPurchase.id}`)}</p>
+                <div className="text-left">
+                  <p className="font-semibold text-sm">{currentPurchase.name}</p>
                   <p className="text-muted-foreground text-xs">{currentPurchase.price}</p>
                 </div>
               </div>
@@ -437,7 +438,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
                 >
                   {purchasedItems.map((item) => (
                     <option key={item.id} value={item.id}>
-                      {t(`products.${item.id}`)}
+                      {item.name}
                     </option>
                   ))}
                 </select>
