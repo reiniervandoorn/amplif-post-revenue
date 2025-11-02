@@ -89,49 +89,11 @@ export default function Careers() {
               {t('careers.openPositions')}
             </h2>
             
-            <div className="space-y-6">
-              {openPositions.map((job, index) => (
-                <motion.div
-                  key={job.titleKey}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                >
-                  <Card className="p-6 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-foreground mb-2">
-                          {t(job.titleKey as any)}
-                        </h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
-                          <div className="flex items-center gap-1">
-                            <Briefcase className="w-4 h-4" />
-                            <span>{t(job.departmentKey as any)}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            <span>{job.location}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            <span>{job.type}</span>
-                          </div>
-                        </div>
-                        <p className="text-muted-foreground">
-                          {t(job.descKey as any)}
-                        </p>
-                      </div>
-                      <Link to="/contact">
-                        <Button className="gradient-primary text-white">
-                          {t('careers.apply')}
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+            <Card className="p-12 text-center border border-border">
+              <p className="text-lg text-muted-foreground">
+                {t('careers.noOpenings')}
+              </p>
+            </Card>
           </motion.div>
 
           <motion.div

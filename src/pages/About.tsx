@@ -137,19 +137,15 @@ export default function About() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">2021: Company founded</span>
+                    <span className="text-sm text-muted-foreground">2024: Company founded</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">2022: First AI models deployed</span>
+                    <span className="text-sm text-muted-foreground">2024: Beta phase launched</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">2023: Partner network launched</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">2024: Global expansion begins</span>
+                    <span className="text-sm text-muted-foreground">2025: Growing merchant network</span>
                   </div>
                 </div>
               </Card>
@@ -215,16 +211,16 @@ export default function About() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="space-y-2">
-                <div className="text-3xl font-bold gradient-text">15+</div>
-                <div className="text-sm text-muted-foreground">Years Combined E-commerce Experience</div>
+                <div className="text-3xl font-bold gradient-text">Bèta</div>
+                <div className="text-sm text-muted-foreground">Nu in actieve beta fase</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold gradient-text">€50M+</div>
-                <div className="text-sm text-muted-foreground">Revenue Generated for Clients</div>
+                <div className="text-3xl font-bold gradient-text">Groeiend</div>
+                <div className="text-sm text-muted-foreground">Uitbreidend netwerk van partners</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold gradient-text">500+</div>
-                <div className="text-sm text-muted-foreground">Successful Implementations</div>
+                <div className="text-3xl font-bold gradient-text">Innovatief</div>
+                <div className="text-sm text-muted-foreground">AI-gedreven matching technologie</div>
               </div>
             </div>
           </motion.div>

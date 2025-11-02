@@ -27,8 +27,8 @@ const translations = {
     'home.hero.seeExamples': 'See Examples',
     'home.whyDifferent.title': 'Why AmplifAI is Different',
     'home.whyDifferent.subtitle': 'See what makes AmplifAI unique compared to other post-purchase tools.',
-    'home.whyDifferent.fast.title': 'Live Within 1 Minute',
-    'home.whyDifferent.fast.desc': 'One snippet, we do the rest.',
+    'home.whyDifferent.fast.title': 'Live Within 5 Minutes',
+    'home.whyDifferent.fast.desc': 'One snippet, extremely easy setup.',
     'home.whyDifferent.control.title': 'Full Control',
     'home.whyDifferent.control.desc': 'You decide which partners are visible.',
     'home.whyDifferent.risk.title': 'No Risk',
@@ -199,6 +199,7 @@ const translations = {
     'about.team.title': 'Built by E-commerce Experts',
     'about.team.text': 'Our team combines deep e-commerce experience with cutting-edge AI expertise. We\'ve helped scale multiple online retailers and understand exactly what merchants need to succeed.',
     
+    
     // Contact
     'contact.title': 'Join the Beta',
     'contact.subtitle': 'Ready to transform your thank-you page or join our partner network? Tell us about your business and let\'s get started.',
@@ -251,7 +252,7 @@ const translations = {
     'partner.addedPrefix': 'has been added to your cart',
     
     // Footer
-    'footer.highlight': 'AmplifAI turns every thank-you page into a new profit channel — within one minute.',
+    'footer.highlight': 'AmplifAI turns every thank-you page into a new profit channel — live within 5 minutes.',
     'footer.company': 'Company',
     'footer.blog': 'Blog',
     'footer.careers': 'Careers',
@@ -555,7 +556,7 @@ const translations = {
     'partners.valueProp.brandProtection.title': 'Brand Protection',
     'partners.valueProp.brandProtection.desc': 'We maintain high standards and provide clear \'offered by Partner\' labeling. Your reputation is protected by our vetting process.',
     'partners.valueProp.flexibleScheduling.title': 'Flexible Scheduling',
-    'partners.valueProp.flexibleScheduling.desc': 'You control your capacity and availability. Our system matches customers to your schedule automatically.',
+    'partners.valueProp.flexibleScheduling.desc': 'You control your capacity and availability. Our system matches customers to your schedule automatically. Appointments can be linked to your existing calendar system.',
     'partners.valueProp.dashboard.title': 'Professional Partner Dashboard',
     'partners.valueProp.dashboard.desc': 'Manage your business with our comprehensive dashboard: track all sales and bookings, create and manage service offerings, view your schedule and appointments, access earnings and payout information, and analyze your performance metrics.',
     'partners.dashboard.feature1': 'Track sales and bookings',
@@ -685,6 +686,7 @@ const translations = {
     'careers.job3.department': 'Design',
     'careers.job3.desc': 'Create beautiful, intuitive experiences for merchants and end customers.',
     'careers.apply': 'Apply Now',
+    'careers.noOpenings': 'We currently have no open positions.',
     'careers.dontSeeRole': 'Don\'t see the right role?',
     'careers.dontSeeRoleDesc': 'We\'re always looking for talented people. Send us your resume and let\'s talk.',
     'careers.getInTouch': 'Get in Touch',
@@ -809,8 +811,8 @@ const translations = {
 'home.hero.seeExamples': 'Bekijk Voorbeelden',
     'home.whyDifferent.title': 'Waarom AmplifAI Anders Is',
     'home.whyDifferent.subtitle': 'Ontdek wat AmplifAI uniek maakt vergeleken met andere post-purchase tools.',
-    'home.whyDifferent.fast.title': 'Binnen 1 Minuut Live',
-    'home.whyDifferent.fast.desc': 'Eén snippet, wij doen de rest.',
+    'home.whyDifferent.fast.title': 'Binnen 5 Minuten Live',
+    'home.whyDifferent.fast.desc': 'Eén snippet, extreem eenvoudige installatie.',
     'home.whyDifferent.control.title': 'Volledige Controle',
     'home.whyDifferent.control.desc': 'Jij bepaalt welke partners zichtbaar zijn.',
     'home.whyDifferent.risk.title': 'Geen Risico',
@@ -1032,10 +1034,10 @@ const translations = {
 'partner.your': 'Je',
 'partner.scheduledOn': 'is gepland op',
 'partner.at': 'om',
-'partner.addedPrefix': 'is toegevoegd aan je winkelwagen',
+    'partner.addedPrefix': 'is toegevoegd aan je winkelwagen',
 
-// Footer
-'footer.highlight': 'AmplifAI maakt van elke bedankpagina een nieuw winstkanaal — binnen één minuut.',
+    // Footer
+    'footer.highlight': 'AmplifAI maakt van elke bedankpagina een nieuw winstkanaal — binnen 5 minuten live.',
 'footer.company': 'Bedrijf',
 'footer.blog': 'Blog',
 'footer.careers': 'Vacatures',
@@ -1471,6 +1473,7 @@ const translations = {
     'careers.job3.department': 'Design',
     'careers.job3.desc': 'Creëer prachtige, intuïtieve ervaringen voor webshops en eindklanten.',
     'careers.apply': 'Solliciteer Nu',
+    'careers.noOpenings': 'Op dit moment hebben we geen openstaande vacatures.',
     'careers.dontSeeRole': 'Zie je niet de juiste rol?',
     'careers.dontSeeRoleDesc': 'We zijn altijd op zoek naar getalenteerde mensen. Stuur ons je CV en laten we praten.',
     'careers.getInTouch': 'Neem Contact Op',

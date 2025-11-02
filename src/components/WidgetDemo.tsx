@@ -327,7 +327,7 @@ interface WidgetDemoProps {
   mode?: "webshop" | "partner";
 }
 
-export const WidgetDemo = ({ purchasedItem = "tv", mode = "webshop" }: WidgetDemoProps) => {
+export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDemoProps) => {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"webshop" | "partner">(mode);
   const [selectedItem, setSelectedItem] = useState(purchasedItem);
