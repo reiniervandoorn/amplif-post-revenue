@@ -21,11 +21,11 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:p-6 lg:px-8">
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold gradient-text">AmplifAI</span>
+            <span className="text-xl lg:text-2xl font-bold gradient-text">AmplifAI</span>
           </Link>
         </div>
 
@@ -33,7 +33,7 @@ export const Header = () => {
         <div className="flex items-center gap-2 lg:hidden">
           <button
             onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
-            className="flex items-center gap-1 px-2 py-1 rounded-md hover:bg-muted transition-colors text-sm"
+            className="flex items-center gap-1 px-2 py-1.5 rounded-md hover:bg-muted transition-colors text-sm"
           >
             <Globe className="h-4 w-4" />
             <span className="uppercase font-medium">{language}</span>
@@ -94,7 +94,7 @@ export const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm border-l border-border"
+            className="lg:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:w-80 border-l border-border shadow-2xl"
           >
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>

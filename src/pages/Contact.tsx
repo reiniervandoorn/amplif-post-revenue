@@ -108,19 +108,19 @@ export default function Contact() {
           </p>
           
           <div className="space-y-4 text-left bg-surface-50 rounded-2xl p-6 border border-border">
-            <h3 className="font-semibold text-foreground">What happens next?</h3>
+            <h3 className="font-semibold text-foreground">{t('contact.whatHappensNext')}</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 gradient-primary rounded-full mt-2"></div>
-                <p className="text-sm text-muted-foreground">Review of your application</p>
+                <p className="text-sm text-muted-foreground">{t('contact.reviewApp')}</p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 gradient-primary rounded-full mt-2"></div>
-                <p className="text-sm text-muted-foreground">15-minute discovery call</p>
+                <p className="text-sm text-muted-foreground">{t('contact.discoveryCall')}</p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 gradient-primary rounded-full mt-2"></div>
-                <p className="text-sm text-muted-foreground">Custom integration plan</p>
+                <p className="text-sm text-muted-foreground">{t('contact.integrationPlan')}</p>
               </div>
             </div>
           </div>
@@ -266,13 +266,13 @@ export default function Contact() {
                             <SelectValue placeholder={t('contact.selectPlatform')} />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="shopify">Shopify</SelectItem>
-                            <SelectItem value="woocommerce">WooCommerce</SelectItem>
-                            <SelectItem value="magento">Magento</SelectItem>
-                            <SelectItem value="bigcommerce">BigCommerce</SelectItem>
-                            <SelectItem value="salesforce">Salesforce Commerce Cloud</SelectItem>
-                            <SelectItem value="custom">Custom Solution</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="shopify">{t('contact.platforms.shopify')}</SelectItem>
+                            <SelectItem value="woocommerce">{t('contact.platforms.woocommerce')}</SelectItem>
+                            <SelectItem value="magento">{t('contact.platforms.magento')}</SelectItem>
+                            <SelectItem value="bigcommerce">{t('contact.platforms.bigcommerce')}</SelectItem>
+                            <SelectItem value="salesforce">{t('contact.platforms.salesforce')}</SelectItem>
+                            <SelectItem value="custom">{t('contact.platforms.custom')}</SelectItem>
+                            <SelectItem value="other">{t('contact.platforms.other')}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -284,13 +284,13 @@ export default function Contact() {
                             <SelectValue placeholder={t('contact.selectCategory')} />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="installer">Installation Services</SelectItem>
-                            <SelectItem value="warranty">Extended Warranties</SelectItem>
-                            <SelectItem value="subscription">Subscription Services</SelectItem>
-                            <SelectItem value="course">Training & Courses</SelectItem>
-                            <SelectItem value="accessory">Accessories & Add-ons</SelectItem>
-                            <SelectItem value="maintenance">Maintenance & Support</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="installer">{t('contact.categories.installer')}</SelectItem>
+                            <SelectItem value="warranty">{t('contact.categories.warranty')}</SelectItem>
+                            <SelectItem value="subscription">{t('contact.categories.subscription')}</SelectItem>
+                            <SelectItem value="course">{t('contact.categories.course')}</SelectItem>
+                            <SelectItem value="accessory">{t('contact.categories.accessory')}</SelectItem>
+                            <SelectItem value="maintenance">{t('contact.categories.maintenance')}</SelectItem>
+                            <SelectItem value="other">{t('contact.categories.other')}</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -322,10 +322,10 @@ export default function Contact() {
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  By submitting this form, you agree to our{" "}
-                  <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>{" "}
-                  and{" "}
-                  <a href="/terms" className="text-primary hover:underline">Terms of Service</a>.
+                  {t('contact.agreeToTerms')}{" "}
+                  <a href="/privacy" className="text-primary hover:underline">{t('contact.privacyPolicy')}</a>{" "}
+                  {t('common.and')}{" "}
+                  <a href="/terms" className="text-primary hover:underline">{t('contact.termsOfService')}</a>.
                 </p>
               </form>
             </Card>
@@ -342,22 +342,22 @@ export default function Contact() {
               <div className="inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-2xl mb-4">
                 <Check className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Quick Setup</h3>
-              <p className="text-sm text-muted-foreground">Integration in under 30 minutes</p>
+              <h3 className="font-semibold text-foreground mb-2">{t('contact.quickSetup')}</h3>
+              <p className="text-sm text-muted-foreground">{t('contact.quickSetupDesc')}</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-2xl mb-4">
                 <Check className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">No Risk</h3>
-              <p className="text-sm text-muted-foreground">No upfront costs or commitments</p>
+              <h3 className="font-semibold text-foreground mb-2">{t('contact.noRisk')}</h3>
+              <p className="text-sm text-muted-foreground">{t('contact.noRiskDesc')}</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 gradient-primary rounded-2xl mb-4">
                 <Check className="w-6 h-6 text-white" />
               </div>
-              <h3 className="font-semibold text-foreground mb-2">Fast Results</h3>
-              <p className="text-sm text-muted-foreground">See revenue within 7 days</p>
+              <h3 className="font-semibold text-foreground mb-2">{t('contact.fastResults')}</h3>
+              <p className="text-sm text-muted-foreground">{t('contact.fastResultsDesc')}</p>
             </div>
           </motion.div>
         </div>
