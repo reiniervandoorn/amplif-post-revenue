@@ -36,10 +36,8 @@ export default function Home() {
   const { t } = useLanguage();
   return <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 lg:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-indigo/5 via-brand-violet/5 to-brand-fuchsia/5"></div>
-        
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 lg:py-24 bg-surface-50 border-b border-border">
+        <div className="relative mx-auto max-w-5xl px-6 lg:px-8">
           <motion.div initial={{
           opacity: 0,
           y: 20

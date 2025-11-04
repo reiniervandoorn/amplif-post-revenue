@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,15 @@ export const Header = () => {
   const { language, setLanguage, t } = useLanguage();
 
   const isActive = (href: string) => location.pathname === href;
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.documentElement.classList.add('overflow-hidden');
+    } else {
+      document.documentElement.classList.remove('overflow-hidden');
+    }
+    return () => document.documentElement.classList.remove('overflow-hidden');
+  }, [mobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
@@ -94,7 +103,7 @@ export const Header = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:w-80 border-l border-border shadow-2xl"
+            className="lg:hidden fixed inset-0 z-[100] h-screen overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:w-80 sm:ml-auto sm:inset-y-0 sm:right-0 sm:left-auto border-l border-border shadow-2xl"
           >
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
@@ -146,7 +155,7 @@ export const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="lg:hidden fixed inset-0 z-40 bg-black/50"
+            className="lg:hidden fixed inset-0 z-[90] bg-black/50"
             onClick={() => setMobileMenuOpen(false)}
           />
         )}

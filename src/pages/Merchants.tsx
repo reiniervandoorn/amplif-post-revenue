@@ -113,7 +113,7 @@ export default function Merchants() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-16 lg:py-24 bg-surface-50 border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
