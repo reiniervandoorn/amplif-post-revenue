@@ -34,18 +34,19 @@ const getPurchasedItems = (language: 'en' | 'nl'): PurchasedItem[] => [
   { id: "vacuum", name: language === 'nl' ? "Robotstofzuiger" : "Robot Vacuum", price: language === 'nl' ? "€399" : "$399", image: "🤖" },
 ];
 
-const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }> = {
+// Helper function to get translated product catalog
+const getProductCatalog = (language: 'en' | 'nl'): Record<string, { webshop: Product[]; partner: Product[] }> => ({
   tv: {
     webshop: [
-      { id: "hdmi", name: "Premium HDMI 2.1 Cable", price: "$29", image: "🔌", benefit: "Perfect 4K signal", category: "webshop" },
-      { id: "mount", name: "Adjustable Wall Mount", price: "$79", image: "🔧", benefit: "Save space & style", category: "webshop" },
-      { id: "soundbar", name: "Wireless Soundbar", price: "$199", image: "🔊", benefit: "Cinema-quality audio", category: "webshop" },
+      { id: "hdmi", name: language === 'nl' ? "Premium HDMI 2.1 Kabel" : "Premium HDMI 2.1 Cable", price: language === 'nl' ? "€29" : "$29", image: "🔌", benefit: "Perfect 4K signal", category: "webshop" },
+      { id: "mount", name: language === 'nl' ? "Verstelbare Muurbeugel" : "Adjustable Wall Mount", price: language === 'nl' ? "€79" : "$79", image: "🔧", benefit: "Save space & style", category: "webshop" },
+      { id: "soundbar", name: language === 'nl' ? "Draadloze Soundbar" : "Wireless Soundbar", price: language === 'nl' ? "€199" : "$199", image: "🔊", benefit: "Cinema-quality audio", category: "webshop" },
     ],
     partner: [
       { 
         id: "install", 
-        name: "Professional Installation", 
-        price: "$149", 
+        name: language === 'nl' ? "Professionele Installatie" : "Professional Installation", 
+        price: language === 'nl' ? "€149" : "$149", 
         image: "👨‍🔧", 
         benefit: "Same-day setup", 
         category: "partner", 
@@ -54,14 +55,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "TechInstall Pro",
           rating: 4.9,
           reviews: 324,
-          description: "Professional TV mounting and setup service with 2-year warranty",
-          availability: "Available today"
+          description: language === 'nl' ? "Professionele TV-montage en setup service met 2 jaar garantie" : "Professional TV mounting and setup service with 2-year warranty",
+          availability: language === 'nl' ? "Vandaag beschikbaar" : "Available today"
         }
       },
       { 
         id: "warranty", 
-        name: "Extended Warranty 3yr", 
-        price: "$199", 
+        name: language === 'nl' ? "Verlengde Garantie 3jr" : "Extended Warranty 3yr", 
+        price: language === 'nl' ? "€199" : "$199", 
         image: "🛡️", 
         benefit: "Total peace of mind", 
         category: "partner", 
@@ -70,14 +71,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "SecureGuard",
           rating: 4.8,
           reviews: 892,
-          description: "3-year comprehensive coverage including accidental damage",
-          availability: "Instant activation"
+          description: language === 'nl' ? "3-jarige allesdekkende garantie inclusief schade" : "3-year comprehensive coverage including accidental damage",
+          availability: language === 'nl' ? "Direct activeren" : "Instant activation"
         }
       },
       { 
         id: "calibration", 
-        name: "Professional Calibration", 
-        price: "$99", 
+        name: language === 'nl' ? "Professionele Kalibratie" : "Professional Calibration", 
+        price: language === 'nl' ? "€99" : "$99", 
         image: "🎨", 
         benefit: "Perfect picture quality", 
         category: "partner", 
@@ -86,23 +87,23 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "PixelPerfect",
           rating: 5.0,
           reviews: 156,
-          description: "Expert color calibration for cinema-quality viewing",
-          availability: "Available this week"
+          description: language === 'nl' ? "Expert kleurkalibratie voor cinema-kwaliteit" : "Expert color calibration for cinema-quality viewing",
+          availability: language === 'nl' ? "Deze week beschikbaar" : "Available this week"
         }
       },
     ],
   },
   espresso: {
     webshop: [
-      { id: "grinder", name: "Burr Coffee Grinder", price: "$89", image: "⚙️", benefit: "Perfect grind every time", category: "webshop" },
-      { id: "descaler", name: "Descaling Solution", price: "$19", image: "🧴", benefit: "Keep it running smooth", category: "webshop" },
-      { id: "cups", name: "Espresso Cup Set", price: "$39", image: "☕", benefit: "Professional presentation", category: "webshop" },
+      { id: "grinder", name: language === 'nl' ? "Koffiemolen" : "Burr Coffee Grinder", price: language === 'nl' ? "€89" : "$89", image: "⚙️", benefit: "Perfect grind every time", category: "webshop" },
+      { id: "descaler", name: language === 'nl' ? "Ontkalkingsmiddel" : "Descaling Solution", price: language === 'nl' ? "€19" : "$19", image: "🧴", benefit: "Keep it running smooth", category: "webshop" },
+      { id: "cups", name: language === 'nl' ? "Espresso Kopjes Set" : "Espresso Cup Set", price: language === 'nl' ? "€39" : "$39", image: "☕", benefit: "Professional presentation", category: "webshop" },
     ],
     partner: [
       { 
         id: "course", 
-        name: "Barista Masterclass", 
-        price: "$79", 
+        name: language === 'nl' ? "Barista Masterclass" : "Barista Masterclass", 
+        price: language === 'nl' ? "€79" : "$79", 
         image: "🎓", 
         benefit: "Learn like a pro", 
         category: "partner", 
@@ -111,14 +112,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "Coffee Academy",
           rating: 4.9,
           reviews: 267,
-          description: "Learn professional espresso techniques in 2-hour hands-on session",
-          availability: "Weekly classes"
+          description: language === 'nl' ? "Leer professionele espresso-technieken in 2 uur hands-on sessie" : "Learn professional espresso techniques in 2-hour hands-on session",
+          availability: language === 'nl' ? "Wekelijkse lessen" : "Weekly classes"
         }
       },
       { 
         id: "beans", 
-        name: "Premium Bean Subscription", 
-        price: "$29/mo", 
+        name: language === 'nl' ? "Premium Bonen Abonnement" : "Premium Bean Subscription", 
+        price: language === 'nl' ? "€29/mnd" : "$29/mo", 
         image: "🌱", 
         benefit: "Fresh roasted monthly", 
         category: "partner", 
@@ -127,14 +128,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "Origin Roasters",
           rating: 4.8,
           reviews: 543,
-          description: "Premium single-origin beans delivered monthly",
-          availability: "Next delivery in 2 days"
+          description: language === 'nl' ? "Premium single-origin bonen maandelijks geleverd" : "Premium single-origin beans delivered monthly",
+          availability: language === 'nl' ? "Volgende levering over 2 dagen" : "Next delivery in 2 days"
         }
       },
       { 
         id: "maintenance", 
-        name: "Annual Maintenance", 
-        price: "$119", 
+        name: language === 'nl' ? "Jaarlijks Onderhoud" : "Annual Maintenance", 
+        price: language === 'nl' ? "€119" : "$119", 
         image: "🔧", 
         benefit: "Keep it perfect", 
         category: "partner", 
@@ -143,23 +144,23 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "CoffeeTech Services",
           rating: 4.7,
           reviews: 189,
-          description: "Professional maintenance to keep your machine running perfectly",
-          availability: "Available this month"
+          description: language === 'nl' ? "Professioneel onderhoud om je machine perfect te houden" : "Professional maintenance to keep your machine running perfectly",
+          availability: language === 'nl' ? "Deze maand beschikbaar" : "Available this month"
         }
       },
     ],
   },
   bike: {
     webshop: [
-      { id: "helmet", name: "Aero Racing Helmet", price: "$159", image: "⛑️", benefit: "Safety meets speed", category: "webshop" },
-      { id: "lights", name: "LED Light Set", price: "$49", image: "💡", benefit: "Ride safely at night", category: "webshop" },
-      { id: "pump", name: "Portable CO2 Pump", price: "$34", image: "🔧", benefit: "Never get stranded", category: "webshop" },
+      { id: "helmet", name: language === 'nl' ? "Aero Racehelm" : "Aero Racing Helmet", price: language === 'nl' ? "€159" : "$159", image: "⛑️", benefit: "Safety meets speed", category: "webshop" },
+      { id: "lights", name: language === 'nl' ? "LED Verlichting Set" : "LED Light Set", price: language === 'nl' ? "€49" : "$49", image: "💡", benefit: "Ride safely at night", category: "webshop" },
+      { id: "pump", name: language === 'nl' ? "Draagbare CO2 Pomp" : "Portable CO2 Pump", price: language === 'nl' ? "€34" : "$34", image: "🔧", benefit: "Never get stranded", category: "webshop" },
     ],
     partner: [
       { 
         id: "fitting", 
-        name: "Professional Bike Fitting", 
-        price: "$199", 
+        name: language === 'nl' ? "Professionele Bike Fitting" : "Professional Bike Fitting", 
+        price: language === 'nl' ? "€199" : "$199", 
         image: "📐", 
         benefit: "Perfect comfort & power", 
         category: "partner", 
@@ -168,14 +169,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "FitCycle Pro",
           rating: 5.0,
           reviews: 412,
-          description: "Comprehensive fitting session to optimize comfort and performance",
-          availability: "Available next week"
+          description: language === 'nl' ? "Complete fitsessie voor optimaal comfort en prestaties" : "Comprehensive fitting session to optimize comfort and performance",
+          availability: language === 'nl' ? "Volgende week beschikbaar" : "Available next week"
         }
       },
       { 
         id: "gps", 
-        name: "GPS Training App Pro", 
-        price: "$9.99/mo", 
+        name: language === 'nl' ? "GPS Training App Pro" : "GPS Training App Pro", 
+        price: language === 'nl' ? "€9,99/mnd" : "$9.99/mo", 
         image: "📱", 
         benefit: "Track every ride", 
         category: "partner", 
@@ -184,14 +185,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "CycleTracker",
           rating: 4.6,
           reviews: 1823,
-          description: "Advanced training plans and performance analytics",
-          availability: "Instant access"
+          description: language === 'nl' ? "Geavanceerde trainingsplannen en prestatie-analyses" : "Advanced training plans and performance analytics",
+          availability: language === 'nl' ? "Direct toegang" : "Instant access"
         }
       },
       { 
         id: "tuneup", 
-        name: "Complete Tune-up", 
-        price: "$89", 
+        name: language === 'nl' ? "Complete Onderhoudsbeurt" : "Complete Tune-up", 
+        price: language === 'nl' ? "€89" : "$89", 
         image: "🔧", 
         benefit: "Keep it running smooth", 
         category: "partner", 
@@ -200,23 +201,23 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "Local Bike Shop",
           rating: 4.8,
           reviews: 328,
-          description: "Full inspection, adjustment, and maintenance service",
-          availability: "Available tomorrow"
+          description: language === 'nl' ? "Volledige inspectie, afstelling en onderhoudsservice" : "Full inspection, adjustment, and maintenance service",
+          availability: language === 'nl' ? "Morgen beschikbaar" : "Available tomorrow"
         }
       },
     ],
   },
   camera: {
     webshop: [
-      { id: "lens", name: "85mm Portrait Lens", price: "$399", image: "🔍", benefit: "Professional portraits", category: "webshop" },
-      { id: "tripod", name: "Carbon Fiber Tripod", price: "$199", image: "🦵", benefit: "Rock-solid stability", category: "webshop" },
-      { id: "bag", name: "Weather-proof Camera Bag", price: "$89", image: "🎒", benefit: "Protect your investment", category: "webshop" },
+      { id: "lens", name: language === 'nl' ? "85mm Portret Lens" : "85mm Portrait Lens", price: language === 'nl' ? "€399" : "$399", image: "🔍", benefit: "Professional portraits", category: "webshop" },
+      { id: "tripod", name: language === 'nl' ? "Carbon Statief" : "Carbon Fiber Tripod", price: language === 'nl' ? "€199" : "$199", image: "🦵", benefit: "Rock-solid stability", category: "webshop" },
+      { id: "bag", name: language === 'nl' ? "Weerbestendige Cameratas" : "Weather-proof Camera Bag", price: language === 'nl' ? "€89" : "$89", image: "🎒", benefit: "Protect your investment", category: "webshop" },
     ],
     partner: [
       { 
         id: "workshop", 
-        name: "Photography Workshop", 
-        price: "$149", 
+        name: language === 'nl' ? "Fotografie Workshop" : "Photography Workshop", 
+        price: language === 'nl' ? "€149" : "$149", 
         image: "🎓", 
         benefit: "Master your craft", 
         category: "partner", 
@@ -225,14 +226,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "Photo Academy",
           rating: 4.9,
           reviews: 234,
-          description: "4-hour intensive workshop covering composition and lighting",
-          availability: "Weekend sessions"
+          description: language === 'nl' ? "4-uurs intensieve workshop over compositie en belichting" : "4-hour intensive workshop covering composition and lighting",
+          availability: language === 'nl' ? "Weekend sessies" : "Weekend sessions"
         }
       },
       { 
         id: "lightroom", 
-        name: "Adobe Creative Suite", 
-        price: "$20.99/mo", 
+        name: language === 'nl' ? "Adobe Creative Suite" : "Adobe Creative Suite", 
+        price: language === 'nl' ? "€20,99/mnd" : "$20.99/mo", 
         image: "🎨", 
         benefit: "Professional editing", 
         category: "partner", 
@@ -241,14 +242,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "Adobe",
           rating: 4.7,
           reviews: 15234,
-          description: "Professional photo and video editing software suite",
-          availability: "Instant access"
+          description: language === 'nl' ? "Professionele foto- en video-editing software suite" : "Professional photo and video editing software suite",
+          availability: language === 'nl' ? "Direct toegang" : "Instant access"
         }
       },
       { 
         id: "insurance", 
-        name: "Equipment Insurance", 
-        price: "$19/mo", 
+        name: language === 'nl' ? "Uitrusting Verzekering" : "Equipment Insurance", 
+        price: language === 'nl' ? "€19/mnd" : "$19/mo", 
         image: "🛡️", 
         benefit: "Full coverage protection", 
         category: "partner", 
@@ -257,23 +258,23 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "GearGuard",
           rating: 4.8,
           reviews: 987,
-          description: "Comprehensive coverage for all your camera equipment",
-          availability: "Instant activation"
+          description: language === 'nl' ? "Allesdekkende dekking voor al je camera-uitrusting" : "Comprehensive coverage for all your camera equipment",
+          availability: language === 'nl' ? "Direct activeren" : "Instant activation"
         }
       },
     ],
   },
   vacuum: {
     webshop: [
-      { id: "filters", name: "HEPA Filter 3-Pack", price: "$29", image: "🌪️", benefit: "Cleaner air & performance", category: "webshop" },
-      { id: "brushes", name: "Replacement Brush Set", price: "$39", image: "🧽", benefit: "Keep it cleaning perfect", category: "webshop" },
-      { id: "dock", name: "Premium Charging Dock", price: "$79", image: "🔋", benefit: "Always ready to clean", category: "webshop" },
+      { id: "filters", name: language === 'nl' ? "HEPA Filter 3-Pack" : "HEPA Filter 3-Pack", price: language === 'nl' ? "€29" : "$29", image: "🌪️", benefit: "Cleaner air & performance", category: "webshop" },
+      { id: "brushes", name: language === 'nl' ? "Vervangborstel Set" : "Replacement Brush Set", price: language === 'nl' ? "€39" : "$39", image: "🧽", benefit: "Keep it cleaning perfect", category: "webshop" },
+      { id: "dock", name: language === 'nl' ? "Premium Oplaadstation" : "Premium Charging Dock", price: language === 'nl' ? "€79" : "$79", image: "🔋", benefit: "Always ready to clean", category: "webshop" },
     ],
     partner: [
       { 
         id: "setup", 
-        name: "Smart Home Setup", 
-        price: "$99", 
+        name: language === 'nl' ? "Smart Home Installatie" : "Smart Home Setup", 
+        price: language === 'nl' ? "€99" : "$99", 
         image: "🏠", 
         benefit: "Complete automation", 
         category: "partner", 
@@ -282,14 +283,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "SmartHome Pro",
           rating: 4.9,
           reviews: 456,
-          description: "Full integration with your home automation system",
-          availability: "Available this week"
+          description: language === 'nl' ? "Volledige integratie met je domotica systeem" : "Full integration with your home automation system",
+          availability: language === 'nl' ? "Deze week beschikbaar" : "Available this week"
         }
       },
       { 
         id: "cleaning", 
-        name: "Monthly Deep Clean", 
-        price: "$149", 
+        name: language === 'nl' ? "Maandelijkse Grote Schoonmaak" : "Monthly Deep Clean", 
+        price: language === 'nl' ? "€149" : "$149", 
         image: "✨", 
         benefit: "Professional results", 
         category: "partner", 
@@ -298,14 +299,14 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "CleanCo Services",
           rating: 4.7,
           reviews: 723,
-          description: "Professional house cleaning service complementing your robot vacuum",
-          availability: "Next available slot tomorrow"
+          description: language === 'nl' ? "Professionele schoonmaakservice als aanvulling op je robotstofzuiger" : "Professional house cleaning service complementing your robot vacuum",
+          availability: language === 'nl' ? "Morgen beschikbaar" : "Next available slot tomorrow"
         }
       },
       { 
         id: "warranty", 
-        name: "Extended Warranty 2yr", 
-        price: "$79", 
+        name: language === 'nl' ? "Verlengde Garantie 2jr" : "Extended Warranty 2yr", 
+        price: language === 'nl' ? "€79" : "$79", 
         image: "🛡️", 
         benefit: "Worry-free cleaning", 
         category: "partner", 
@@ -314,13 +315,13 @@ const productCatalog: Record<string, { webshop: Product[]; partner: Product[] }>
           name: "RoboGuard",
           rating: 4.8,
           reviews: 634,
-          description: "2-year extended warranty covering all components",
-          availability: "Instant activation"
+          description: language === 'nl' ? "2-jarige verlengde garantie voor alle onderdelen" : "2-year extended warranty covering all components",
+          availability: language === 'nl' ? "Direct activeren" : "Instant activation"
         }
       },
     ],
   },
-};
+});
 
 interface WidgetDemoProps {
   purchasedItem?: string;
@@ -341,6 +342,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
 
   const purchasedItems = getPurchasedItems(language);
   const currentPurchase = purchasedItems.find(item => item.id === selectedItem) || purchasedItems[0];
+  const productCatalog = getProductCatalog(language);
   const currentOffers = productCatalog[selectedItem] || productCatalog.tv;
 
   const serviceIds = new Set(["install", "maintenance", "fitting", "tuneup", "setup", "assembly", "workshop", "course"]);
@@ -399,38 +401,38 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
   return (
     <div className="relative max-w-4xl mx-auto">
       {/* Device Frame */}
-      <div className="relative bg-surface-100 rounded-3xl p-8 shadow-2xl border border-border">
+      <div className="relative bg-surface-100 rounded-3xl p-4 sm:p-8 shadow-2xl border border-border">
         {/* Mock Browser/App Header */}
-        <div className="flex items-center space-x-2 mb-6">
-          <div className="flex space-x-2">
+        <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+          <div className="hidden sm:flex space-x-2">
             <div className="w-3 h-3 rounded-full bg-red-400"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
           </div>
-<div className="flex-1 bg-surface-200 rounded-full px-4 py-1.5 text-sm text-muted-foreground ml-4">
+<div className="flex-1 bg-surface-200 rounded-full px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-muted-foreground sm:ml-4">
             {t('widget.sampleUrl')}
           </div>
         </div>
 
         {/* Thank You Page Content */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-success/10 rounded-full mb-4">
-            <Check className="w-8 h-8 text-success" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-success/10 rounded-full mb-3 sm:mb-4">
+            <Check className="w-6 h-6 sm:w-8 sm:h-8 text-success" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
-          <p className="text-muted-foreground">{t('widget.thankYou')} {currentPurchase.name}</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-2">{t('widget.orderConfirmed')}</h2>
+          <p className="text-sm sm:text-base text-muted-foreground px-4">{t('widget.thankYou')} {currentPurchase.name}</p>
           
           {/* Purchase Item Selector for Demo */}
-          <div className="mt-6 p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">{currentPurchase.image}</span>
-                <div className="text-left">
-                  <p className="font-semibold text-sm">{currentPurchase.name}</p>
+          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-card rounded-2xl border border-border max-w-md mx-auto">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+                <span className="text-xl sm:text-2xl flex-shrink-0">{currentPurchase.image}</span>
+                <div className="text-left min-w-0">
+                  <p className="font-semibold text-xs sm:text-sm truncate">{currentPurchase.name}</p>
                   <p className="text-muted-foreground text-xs">{currentPurchase.price}</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 flex-shrink-0">
                 <select
                   value={selectedItem}
                   onChange={(e) => setSelectedItem(e.target.value)}
@@ -455,20 +457,20 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
           className="relative bg-card rounded-3xl border border-border shadow-xl overflow-hidden"
         >
           {/* Widget Header */}
-          <div className="p-6 border-b border-border">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
-                  <ShoppingCart className="w-4 h-4 text-white" />
+          <div className="p-4 sm:p-6 border-b border-border">
+            <div className="flex items-center justify-between mb-4 gap-2">
+              <div className="flex items-center space-x-2 min-w-0">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                  <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">{t('widget.title')}</h3>
-                  <p className="text-xs text-muted-foreground">{t('widget.subtitle')}</p>
+                <div className="min-w-0">
+                  <h3 className="font-semibold text-sm sm:text-base text-foreground truncate">{t('widget.title')}</h3>
+                  <p className="text-xs text-muted-foreground hidden sm:block">{t('widget.subtitle')}</p>
                 </div>
               </div>
-              <div className="text-xs text-muted-foreground flex items-center space-x-1">
+              <div className="text-xs text-muted-foreground flex items-center space-x-1 flex-shrink-0">
                 <Clock className="w-3 h-3" />
-                <span>{t('widget.byAmplif')}</span>
+                <span className="hidden sm:inline">{t('widget.byAmplif')}</span>
               </div>
             </div>
 
@@ -484,7 +486,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
               />
               <button
                 onClick={() => setActiveTab("webshop")}
-                className={`relative z-10 px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                className={`relative z-10 px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium rounded-xl transition-colors ${
                   activeTab === "webshop" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -492,7 +494,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
               </button>
               <button
                 onClick={() => setActiveTab("partner")}
-                className={`relative z-10 px-3 py-2 text-sm font-medium rounded-xl transition-colors ${
+                className={`relative z-10 px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium rounded-xl transition-colors ${
                   activeTab === "partner" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -502,7 +504,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
           </div>
 
           {/* Product Grid */}
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -510,7 +512,7 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
               >
                 {currentOffers[activeTab].map((product, index) => (
                   <motion.div
@@ -519,18 +521,17 @@ export const WidgetDemo = ({ purchasedItem = "tv", mode = "partner" }: WidgetDem
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    <Card className="p-4 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
+                    <Card className="p-3 sm:p-4 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
                       <div className="text-center mb-3">
-                        <div className="text-3xl mb-2">{product.image}</div>
-                        <h4 className="font-semibold text-sm text-foreground mb-1">{product.name}</h4>
-{/* Removed benefit to avoid untranslated text */}
+                        <div className="text-2xl sm:text-3xl leading-none mb-2">{product.image}</div>
+                        <h4 className="font-semibold text-xs sm:text-sm text-foreground mb-1 min-h-[2rem] flex items-center justify-center">{product.name}</h4>
 {product.provider && (
-  <p className="text-xs text-brand-violet">{t('common.by')} {product.provider}</p>
+  <p className="text-xs text-brand-violet truncate">{t('common.by')} {product.provider}</p>
 )}
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-foreground">{product.price}</span>
+                          <span className="font-bold text-sm sm:text-base text-foreground">{product.price}</span>
                           <div className="flex items-center space-x-1 text-xs text-muted-foreground">
                             <Star className="w-3 h-3 fill-current text-yellow-400" />
                             <span>4.8</span>
