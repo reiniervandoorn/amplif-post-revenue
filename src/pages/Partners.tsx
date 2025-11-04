@@ -361,7 +361,7 @@ export default function Partners() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className="p-8 h-full hover-lift transition-all duration-200 hover:shadow-lg border border-border">
-                  <div className="text-5xl mb-6">{category.icon}</div>
+                  <div className="text-4xl md:text-5xl leading-none mb-6">{category.icon}</div>
                   <h3 className="text-xl font-semibold text-foreground mb-4">
                     {category.title}
                   </h3>

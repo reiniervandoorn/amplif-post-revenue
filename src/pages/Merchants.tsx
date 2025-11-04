@@ -357,7 +357,7 @@ export default function Merchants() {
                 className="text-center"
               >
                 <Card className="p-6 hover-lift transition-all duration-200 hover:shadow-lg border border-border">
-                  <div className="text-3xl mb-3">{platform.logo}</div>
+                  <div className="text-2xl md:text-3xl leading-none mb-3">{platform.logo}</div>
                   <h3 className="font-semibold text-foreground">
                     {platform.name}
                   </h3>

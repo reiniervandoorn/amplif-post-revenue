@@ -350,7 +350,7 @@ export default function Home() {
                 duration: 0.5,
                 delay: 1 + index * 0.1
               }} className="flex items-center space-x-2">
-                    <span className="text-2xl" aria-hidden> {company.logo}</span>
+                    <span className="text-xl md:text-2xl leading-none" aria-hidden> {company.logo}</span>
                     <span className="sr-only">{company.name}</span>
                   </motion.div>)}
               </div>
