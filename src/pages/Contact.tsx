@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
 
 interface FormData {
   name: string;
@@ -19,6 +20,16 @@ interface FormData {
   platform: string;
   category: string;
 }
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().min(1, "Company is required").max(200, "Company must be less than 200 characters"),
+  website: z.string().trim().max(255, "Website must be less than 255 characters").optional().or(z.literal('')),
+  userType: z.enum(['merchant', 'partner'], { required_error: "Please select merchant or partner" }),
+  platform: z.string().max(50).optional(),
+  category: z.string().max(50).optional(),
+});
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
@@ -32,6 +43,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
   const { t } = useLanguage();
 
@@ -42,23 +54,43 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setValidationErrors({});
 
     try {
+      // Validate form data
+      const result = contactSchema.safeParse(formData);
+      
+      if (!result.success) {
+        const errors: Record<string, string> = {};
+        result.error.errors.forEach((err) => {
+          if (err.path[0]) {
+            errors[err.path[0].toString()] = err.message;
+          }
+        });
+        setValidationErrors(errors);
+        toast({
+          title: t('common.error'),
+          description: t('contact.errorMsg'),
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       // Save to Supabase
       const { error } = await supabase
         .from('signups')
         .insert({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          website: formData.website || null,
-          user_type: formData.userType,
-          platform: formData.platform || null,
-          category: formData.category || null,
+          name: result.data.name,
+          email: result.data.email,
+          company: result.data.company,
+          website: result.data.website || null,
+          user_type: result.data.userType,
+          platform: result.data.platform || null,
+          category: result.data.category || null,
         });
 
       if (error) {
-        console.error('Error saving signup:', error);
         throw error;
       }
       
@@ -68,7 +100,6 @@ export default function Contact() {
         description: t('contact.success'),
       });
     } catch (error) {
-      console.error('Form submission error:', error);
       toast({
         title: t('common.error'),
         description: t('contact.errorMsg'),
@@ -169,6 +200,9 @@ export default function Contact() {
                 {/* User Type Toggle */}
                 <div className="space-y-3">
                   <Label className="text-base font-semibold text-foreground">{t('contact.iam')}</Label>
+                  {validationErrors.userType && (
+                    <p className="text-red-500 text-sm">{validationErrors.userType}</p>
+                  )}
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
@@ -209,8 +243,11 @@ export default function Contact() {
                       onChange={(e) => handleInputChange("name", e.target.value)}
                       placeholder={t('contact.name')}
                       required
-                      className="bg-background border-border focus:border-primary"
+                      className={`bg-background border-border focus:border-primary ${validationErrors.name ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.name && (
+                      <p className="text-red-500 text-sm">{validationErrors.name}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-foreground">{t('contact.email')} *</Label>
@@ -221,8 +258,11 @@ export default function Contact() {
                       onChange={(e) => handleInputChange("email", e.target.value)}
                       placeholder="you@company.com"
                       required
-                      className="bg-background border-border focus:border-primary"
+                      className={`bg-background border-border focus:border-primary ${validationErrors.email ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.email && (
+                      <p className="text-red-500 text-sm">{validationErrors.email}</p>
+                    )}
                   </div>
                 </div>
 
@@ -235,8 +275,11 @@ export default function Contact() {
                       onChange={(e) => handleInputChange("company", e.target.value)}
                       placeholder={t('contact.company')}
                       required
-                      className="bg-background border-border focus:border-primary"
+                      className={`bg-background border-border focus:border-primary ${validationErrors.company ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.company && (
+                      <p className="text-red-500 text-sm">{validationErrors.company}</p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="website" className="text-foreground">{t('contact.website')}</Label>
@@ -245,8 +288,11 @@ export default function Contact() {
                       value={formData.website}
                       onChange={(e) => handleInputChange("website", e.target.value)}
                       placeholder="https://yourwebsite.com"
-                      className="bg-background border-border focus:border-primary"
+                      className={`bg-background border-border focus:border-primary ${validationErrors.website ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.website && (
+                      <p className="text-red-500 text-sm">{validationErrors.website}</p>
+                    )}
                   </div>
                 </div>
 
