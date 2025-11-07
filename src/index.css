@@ -134,12 +134,12 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     background-image: 
-      radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.06) 1px, transparent 0),
-      radial-gradient(at 0% 0%, hsl(var(--brand-indigo) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsl(var(--brand-fuchsia) / 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsl(var(--brand-violet) / 0.1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsl(var(--brand-indigo) / 0.08) 0px, transparent 50%);
-    background-size: 40px 40px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+      radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.15) 1px, transparent 0),
+      radial-gradient(at 0% 0%, hsl(var(--brand-indigo) / 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsl(var(--brand-fuchsia) / 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(var(--brand-violet) / 0.25) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(var(--brand-indigo) / 0.2) 0px, transparent 50%);
+    background-size: 30px 30px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
     background-attachment: fixed;
     animation: backgroundFloat 20s ease-in-out infinite;
   }
