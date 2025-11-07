@@ -1638,7 +1638,7 @@ const translations = {
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguage] = useState<'en' | 'nl'>(() => {
     const saved = localStorage.getItem('amplif-language');
-    return (saved as 'en' | 'nl') || 'en';
+    return (saved as 'en' | 'nl') || 'nl';
   });
 
   useEffect(() => {
