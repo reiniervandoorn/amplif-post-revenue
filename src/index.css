@@ -146,10 +146,11 @@
     height: 200%;
     z-index: -1;
     background: 
-      radial-gradient(circle 800px at 20% 30%, hsl(var(--brand-indigo) / 0.4), transparent 50%),
-      radial-gradient(circle 600px at 80% 20%, hsl(var(--brand-fuchsia) / 0.35), transparent 50%),
-      radial-gradient(circle 700px at 40% 80%, hsl(var(--brand-violet) / 0.4), transparent 50%),
-      radial-gradient(circle 500px at 90% 70%, hsl(var(--brand-indigo) / 0.3), transparent 50%),
+      radial-gradient(circle 600px at 20% 30%, hsl(var(--brand-indigo) / 0.6), transparent 40%),
+      radial-gradient(circle 500px at 80% 20%, hsl(var(--brand-fuchsia) / 0.55), transparent 40%),
+      radial-gradient(circle 550px at 40% 80%, hsl(var(--brand-violet) / 0.6), transparent 40%),
+      radial-gradient(circle 450px at 90% 70%, hsl(var(--brand-indigo) / 0.5), transparent 40%),
+      radial-gradient(circle 400px at 10% 90%, hsl(var(--brand-fuchsia) / 0.45), transparent 40%),
       hsl(var(--background));
     animation: floatingOrbs 20s ease-in-out infinite;
   }
