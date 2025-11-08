@@ -134,25 +134,50 @@
   body {
     @apply bg-background text-foreground font-inter antialiased;
     position: relative;
-    background: 
-      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px),
-      linear-gradient(180deg, hsl(var(--primary) / 0.03) 1px, transparent 1px),
-      radial-gradient(ellipse at top left, hsl(var(--brand-indigo) / 0.15), transparent 50%),
-      radial-gradient(ellipse at top right, hsl(var(--brand-fuchsia) / 0.12), transparent 50%),
-      radial-gradient(ellipse at bottom left, hsl(var(--brand-violet) / 0.15), transparent 50%),
-      radial-gradient(ellipse at bottom right, hsl(var(--brand-indigo) / 0.12), transparent 50%),
-      hsl(var(--background));
-    background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-    background-attachment: fixed;
-    animation: meshGradient 15s ease-in-out infinite;
+    overflow-x: hidden;
   }
   
-  @keyframes meshGradient {
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+    background: 
+      radial-gradient(circle 800px at 20% 30%, hsl(var(--brand-indigo) / 0.4), transparent 50%),
+      radial-gradient(circle 600px at 80% 20%, hsl(var(--brand-fuchsia) / 0.35), transparent 50%),
+      radial-gradient(circle 700px at 40% 80%, hsl(var(--brand-violet) / 0.4), transparent 50%),
+      radial-gradient(circle 500px at 90% 70%, hsl(var(--brand-indigo) / 0.3), transparent 50%),
+      hsl(var(--background));
+    animation: floatingOrbs 20s ease-in-out infinite;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      radial-gradient(circle at 80% 20%, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 60px 60px;
+    background-position: 0 0, 30px 30px;
+  }
+  
+  @keyframes floatingOrbs {
     0%, 100% {
-      background-position: 0 0, 0 0, 0% 0%, 100% 0%, 0% 100%, 100% 100%;
+      transform: translate(0, 0) rotate(0deg);
     }
-    50% {
-      background-position: 10px 10px, 10px 10px, 10% 10%, 90% 10%, 10% 90%, 90% 90%;
+    33% {
+      transform: translate(5%, -5%) rotate(120deg);
+    }
+    66% {
+      transform: translate(-5%, 5%) rotate(240deg);
     }
   }
 }
